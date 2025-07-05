@@ -869,7 +869,7 @@
 					]
 				},
 				{
-					"name": "🐦 Create Tweet Copy",
+					"name": "🐦 Like Tweet",
 					"id": "36248379-c7215504-f0ba-4026-aa78-030f21556c1c",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
