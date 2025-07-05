@@ -62,18 +62,36 @@ app.use(/(.*)/, (req, res) => {
 });
 
 app.use(errorHandler);
-
 app.listen(PORT, () => {
 	console.log("\n🚀 Server running on http://localhost:" + PORT);
 	console.log("=".repeat(60));
 
 	console.log("\n📍 API ENDPOINTS:");
+
+	// Health & Utility
+	console.log("\n🛠️ UTILS:");
 	console.table([
 		{ Method: "GET", Endpoint: "/api/health", Description: "Health check", Auth: "❌" },
+		{ Method: "POST", Endpoint: "/api/reset", Description: "Reset to seed data", Auth: "❌" },
+	]);
+
+	// Auth
+	console.log("\n🔐 AUTH:");
+	console.table([
 		{ Method: "POST", Endpoint: "/api/auth/register", Description: "Register new user", Auth: "❌" },
 		{ Method: "POST", Endpoint: "/api/auth/login", Description: "Login user", Auth: "❌" },
+	]);
+
+	// Users
+	console.log("\n👤 USERS:");
+	console.table([
 		{ Method: "GET", Endpoint: "/api/users/me", Description: "Get current user", Auth: "🔒" },
 		{ Method: "GET", Endpoint: "/api/users/:username", Description: "Get user by username", Auth: "❌" },
+	]);
+
+	// Tweets
+	console.log("\n📝 TWEETS:");
+	console.table([
 		{ Method: "GET", Endpoint: "/api/tweets", Description: "Get all tweets", Auth: "❌" },
 		{ Method: "GET", Endpoint: "/api/tweets/feed", Description: "Get personalized feed", Auth: "🔒" },
 		{ Method: "GET", Endpoint: "/api/tweets/:id", Description: "Get single tweet", Auth: "❌" },
@@ -83,7 +101,6 @@ app.listen(PORT, () => {
 		{ Method: "DELETE", Endpoint: "/api/tweets/:id/like", Description: "Unlike a tweet", Auth: "🔒" },
 		{ Method: "POST", Endpoint: "/api/tweets/:id/toggle-like", Description: "Toggle like/unlike", Auth: "🔒" },
 		{ Method: "DELETE", Endpoint: "/api/tweets/:id", Description: "Delete tweet", Auth: "🔒" },
-		{ Method: "POST", Endpoint: "/api/reset", Description: "Reset to seed data", Auth: "❌" },
 	]);
 
 	console.log("\n👤 TEST CREDENTIALS:");
@@ -93,9 +110,9 @@ app.listen(PORT, () => {
 		{ Username: "tech_guru", Password: "password123" },
 	]);
 
-	console.log("\n🧪 Quick Test Commands:");
-	console.log(`curl http://localhost:${PORT}/api/health`);
-	console.log(
-		`curl -X POST http://localhost:${PORT}/api/auth/login -H "Content-Type: application/json" -d '{"username":"john_doe","password":"password123"}'`
-	);
+	// console.log("\n🧪 QUICK TEST COMMANDS:");
+	// console.log(`curl http://localhost:${PORT}/api/health`);
+	// console.log(
+	// 	`curl -X POST http://localhost:${PORT}/api/auth/login -H "Content-Type: application/json" -d '{"username":"john_doe","password":"password123"}'`
+	// );
 });

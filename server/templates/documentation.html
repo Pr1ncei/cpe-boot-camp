@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Documentation</title>
+    <style>
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    margin: 2rem;
+    background-color: #f9fbfc;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    color: #1da1f2;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.server-url {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+}
+
+.server-url code {
+    background: #f1f5f9;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    font-family: ui-monospace, "Courier New", monospace;
+}
+
+.section {
+    margin: 2.5rem 0;
+}
+
+.section h2 {
+    color: #1e293b;
+    border-bottom: 2px solid #1da1f2;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.endpoint-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+.endpoint-header {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.method {
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.get { background-color: #22c55e; }
+.post { background-color: #3b82f6; }
+.delete { background-color: #ef4444; }
+
+.endpoint-path {
+    font-family: ui-monospace, "Courier New", monospace;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.auth-badge {
+    background: #fef2f2;
+    color: #dc2626;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.endpoint-body {
+    padding: 1.5rem;
+}
+
+.endpoint-description {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #374151;
+}
+
+.code-block {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 6px;
+    font-family: ui-monospace, "Courier New", monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+    white-space: pre;
+    line-height: 1.5;
+}
+
+.code-block .comment {
+    color: #9ca3af;
+}
+
+.code-block .string {
+    color: #34d399;
+}
+
+.code-block .number {
+    color: #fbbf24;
+}
+
+.code-block .key {
+    color: #60a5fa;
+}
+
+h4 {
+    color: #374151;
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.param-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.param-table th,
+.param-table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.param-table th {
+    background: #f8fafc;
+    font-weight: 600;
+    color: #374151;
+}
+
+.param-name {
+    font-family: ui-monospace, "Courier New", monospace;
+    background: #f1f5f9;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.85rem;
+}
+
+.required {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.optional {
+    color: #6b7280;
+}
+
+.nav-section {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #1da1f2;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.nav-links a:hover {
+    background: #1da1f2;
+    color: #fff;
+}
+
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #1da1f2;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #0e8ace;
+    transform: translateY(-2px);
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 API Documentation</h1>
+        <p class="subtitle">Stack Puno pero Frontend Muna Bootcamp</p>
+        
+        <div class="server-url">
+            <strong>Base URL:</strong> <code id="api-base-url">http://localhost:3140</code>
+        </div>
+
+        <div class="nav-section">
+            <h3 style="text-align: center; margin-bottom: 1rem;">Quick Navigation</h3>
+            <div class="nav-links">
+                <a href="#auth">Authentication</a>
+                <a href="#users">Users</a>
+                <a href="#tweets">Tweets</a>
+                <a href="#utility">Utility</a>
+                <a href="#examples">Examples</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📚 Complete API Endpoints Summary</h2>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <thead>
+                        <tr style="background: #1da1f2; color: white;">
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">#</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">Method</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">Endpoint</th>
+                            <th style="padding: 1rem; text-align: left; font-weight: 600;">Description</th>
+                            <th style="padding: 1rem; text-align: center; font-weight: 600;">Auth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- AUTHENTICATION ROUTES -->
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">1</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method post" style="font-size: 0.7rem;">POST</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/auth/register</td>
+                            <td style="padding: 0.75rem 1rem;">Register new user</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">2</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method post" style="font-size: 0.7rem;">POST</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/auth/login</td>
+                            <td style="padding: 0.75rem 1rem;">Login user</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        
+                        <!-- USER ROUTES -->
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">3</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/users/me</td>
+                            <td style="padding: 0.75rem 1rem;">Get current user profile</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">4</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/users/search</td>
+                            <td style="padding: 0.75rem 1rem;">Search users by username or bio</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">5</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/users/:username</td>
+                            <td style="padding: 0.75rem 1rem;">Get user profile by username</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">6</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/users/:username/activity</td>
+                            <td style="padding: 0.75rem 1rem;">Get user activity feed</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        
+                        <!-- TWEET ROUTES -->
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">7</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets</td>
+                            <td style="padding: 0.75rem 1rem;">Get all tweets with pagination</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">8</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/feed</td>
+                            <td style="padding: 0.75rem 1rem;">Get personalized user feed</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">9</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/:id</td>
+                            <td style="padding: 0.75rem 1rem;">Get single tweet by ID</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">10</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/user/:username</td>
+                            <td style="padding: 0.75rem 1rem;">Get tweets from specific user</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">11</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/:id/stats</td>
+                            <td style="padding: 0.75rem 1rem;">Get tweet statistics and likers</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">12</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method post" style="font-size: 0.7rem;">POST</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets</td>
+                            <td style="padding: 0.75rem 1rem;">Create new tweet</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">13</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method post" style="font-size: 0.7rem;">POST</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/:id/like</td>
+                            <td style="padding: 0.75rem 1rem;">Like a tweet</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">14</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method delete" style="font-size: 0.7rem;">DELETE</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/:id/like</td>
+                            <td style="padding: 0.75rem 1rem;">Unlike a tweet</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">15</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method post" style="font-size: 0.7rem;">POST</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/:id/toggle-like</td>
+                            <td style="padding: 0.75rem 1rem;">Toggle like/unlike a tweet</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">16</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method delete" style="font-size: 0.7rem;">DELETE</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/tweets/:id</td>
+                            <td style="padding: 0.75rem 1rem;">Delete tweet by ID</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">🔒</td>
+                        </tr>
+                        
+                        <!-- UTILITY ROUTES -->
+                        <tr style="border-bottom: 1px solid #e2e8f0;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">17</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/health</td>
+                            <td style="padding: 0.75rem 1rem;">Health check & API statistics</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">18</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method post" style="font-size: 0.7rem;">POST</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/api/reset</td>
+                            <td style="padding: 0.75rem 1rem;">Reset database to seed data</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 1rem; color: #6b7280;">19</td>
+                            <td style="padding: 0.75rem 1rem;"><span class="method get" style="font-size: 0.7rem;">GET</span></td>
+                            <td style="padding: 0.75rem 1rem; font-family: ui-monospace, monospace; color: #1e293b;">/</td>
+                            <td style="padding: 0.75rem 1rem;">API Documentation (this page)</td>
+                            <td style="padding: 0.75rem 1rem; text-align: center;">❌</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="margin-top: 1rem; padding: 1rem; background: #f0f9ff; border-radius: 6px; font-size: 0.9rem;">
+                <strong>Legend:</strong> 🔒 = Authentication Required | ❌ = No Authentication Required<br>
+                <strong>Total Endpoints:</strong> 19 routes across 4 categories
+            </div>
+        </div>
+
+        <div class="section" id="auth">
+            <h2>🔐 Authentication Endpoints</h2>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-path">/api/auth/register</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Create a new user account with username, email, and password</p>
+                    
+                    <h4>Request Body:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">username</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>Unique username (min 3 characters)</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">email</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>Valid email address</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">password</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>Password (min 6 characters)</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X POST <span id="register-url">http://localhost:3140</span>/api/auth/register \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "username": "new_user",
+    "email": "user@example.com",
+    "password": "mypassword123"
+  }'</span></div>
+
+                    <h4>Success Response (201):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"User created successfully"</span>,
+  <span class="key">"user"</span>: {
+    <span class="key">"id"</span>: <span class="number">4</span>,
+    <span class="key">"username"</span>: <span class="string">"new_user"</span>,
+    <span class="key">"email"</span>: <span class="string">"user@example.com"</span>,
+    <span class="key">"bio"</span>: <span class="string">""</span>,
+    <span class="key">"createdAt"</span>: <span class="string">"2024-07-01T12:00:00.000Z"</span>
+  },
+  <span class="key">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span>
+}</div>
+
+                    <h4>Error Response (400):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Username already exists"</span>
+}</div>
+
+                    <h4>Error Response (409):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Email already exists"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-path">/api/auth/login</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Login with existing credentials (username or email)</p>
+                    
+                    <h4>Request Body:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">username</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>Username or email address</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">password</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>User password</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X POST <span id="login-url">http://localhost:3140</span>/api/auth/login \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "username": "john_doe",
+    "password": "password123"
+  }'</span></div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Login successful"</span>,
+  <span class="key">"user"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+    <span class="key">"email"</span>: <span class="string">"john@example.com"</span>,
+    <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>,
+    <span class="key">"createdAt"</span>: <span class="string">"2024-01-15T00:00:00.000Z"</span>
+  },
+  <span class="key">"token"</span>: <span class="string">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjF9..."</span>
+}</div>
+
+                    <h4>Error Response (401):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Invalid credentials"</span>
+}</div>
+
+                    <h4>Demo Credentials:</h4>
+                    <div style="background: #e0f2fe; padding: 1rem; border-radius: 6px; margin: 1rem 0; font-size: 0.9rem;">
+                        <strong>Test Accounts:</strong><br>
+                        • Username: <code>john_doe</code> | Password: <code>password123</code><br>
+                        • Username: <code>jane_smith</code> | Password: <code>password123</code><br>
+                        • Username: <code>tech_guru</code> | Password: <code>password123</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="users">
+            <h2>👤 User Endpoints</h2>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/users/me</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get current authenticated user's profile with statistics</p>
+                    
+                    <h4>Headers:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">Authorization</code></td>
+                            <td>Bearer YOUR_JWT_TOKEN</td>
+                            <td><span class="required">Required</span></td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span> \
+  <span id="users-me-url">http://localhost:3140</span>/api/users/me</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"id"</span>: <span class="number">1</span>,
+  <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+  <span class="key">"email"</span>: <span class="string">"john@example.com"</span>,
+  <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>,
+  <span class="key">"createdAt"</span>: <span class="string">"2024-01-15T00:00:00.000Z"</span>,
+  <span class="key">"tweetsCount"</span>: <span class="number">15</span>,
+  <span class="key">"likesGiven"</span>: <span class="number">42</span>,
+  <span class="key">"likesReceived"</span>: <span class="number">28</span>
+}</div>
+
+                    <h4>Error Response (401):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Access token required"</span>
+}</div>
+
+                    <h4>Error Response (403):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Invalid or expired token"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/users/search</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Search for users by username or bio content</p>
+                    
+                    <h4>Query Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">q</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>Search query string</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">limit</code></td>
+                            <td>number</td>
+                            <td><span class="optional">Optional</span></td>
+                            <td>Max results (default: 10)</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="search-url">http://localhost:3140</span>/api/users/search?q=developer&limit=5</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">[
+  {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+    <span class="key">"email"</span>: <span class="string">"john@example.com"</span>,
+    <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>,
+    <span class="key">"createdAt"</span>: <span class="string">"2024-01-15T00:00:00.000Z"</span>,
+    <span class="key">"tweetsCount"</span>: <span class="number">15</span>,
+    <span class="key">"likesGiven"</span>: <span class="number">42</span>,
+    <span class="key">"likesReceived"</span>: <span class="number">28</span>
+  },
+  {
+    <span class="key">"id"</span>: <span class="number">4</span>,
+    <span class="key">"username"</span>: <span class="string">"sarah_codes"</span>,
+    <span class="key">"email"</span>: <span class="string">"sarah@example.com"</span>,
+    <span class="key">"bio"</span>: <span class="string">"Full-stack developer | React & Node.js"</span>,
+    <span class="key">"createdAt"</span>: <span class="string">"2024-01-20T00:00:00.000Z"</span>,
+    <span class="key">"tweetsCount"</span>: <span class="number">8</span>,
+    <span class="key">"likesGiven"</span>: <span class="number">15</span>,
+    <span class="key">"likesReceived"</span>: <span class="number">12</span>
+  }
+]</div>
+
+                    <h4>Error Response (400):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Search query is required"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/users/:username</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get any user's public profile by username</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">username</code></td>
+                            <td>string</td>
+                            <td>The username to look up</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="user-profile-url">http://localhost:3140</span>/api/users/jane_smith</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"id"</span>: <span class="number">2</span>,
+  <span class="key">"username"</span>: <span class="string">"jane_smith"</span>,
+  <span class="key">"email"</span>: <span class="string">"jane@example.com"</span>,
+  <span class="key">"bio"</span>: <span class="string">"UX designer who loves to code"</span>,
+  <span class="key">"createdAt"</span>: <span class="string">"2024-02-10T00:00:00.000Z"</span>,
+  <span class="key">"tweetsCount"</span>: <span class="number">8</span>,
+  <span class="key">"likesGiven"</span>: <span class="number">15</span>,
+  <span class="key">"likesReceived"</span>: <span class="number">22</span>
+}</div>
+
+                    <h4>Error Response (404):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"User not found"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/users/:username/activity</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get user's activity feed (tweets and likes) - only accessible by the user themselves</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">username</code></td>
+                            <td>string</td>
+                            <td>Username (must match authenticated user)</td>
+                        </tr>
+                    </table>
+
+                    <h4>Query Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">limit</code></td>
+                            <td>number</td>
+                            <td>20</td>
+                            <td>Number of activities to return</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span> \
+  <span id="activity-url">http://localhost:3140</span>/api/users/john_doe/activity?limit=10</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">[
+  {
+    <span class="key">"type"</span>: <span class="string">"tweet"</span>,
+    <span class="key">"id"</span>: <span class="number">15</span>,
+    <span class="key">"content"</span>: <span class="string">"Just shipped a new feature! 🚀"</span>,
+    <span class="key">"date"</span>: <span class="string">"2024-07-01T15:20:00.000Z"</span>,
+    <span class="key">"data"</span>: {
+      <span class="key">"id"</span>: <span class="number">15</span>,
+      <span class="key">"user_id"</span>: <span class="number">1</span>,
+      <span class="key">"content"</span>: <span class="string">"Just shipped a new feature! 🚀"</span>,
+      <span class="key">"likes"</span>: <span class="number">5</span>,
+      <span class="key">"retweets"</span>: <span class="number">2</span>
+    }
+  },
+  {
+    <span class="key">"type"</span>: <span class="string">"like"</span>,
+    <span class="key">"id"</span>: <span class="number">8</span>,
+    <span class="key">"tweetId"</span>: <span class="number">12</span>,
+    <span class="key">"content"</span>: <span class="string">"CSS Grid is amazing!"</span>,
+    <span class="key">"date"</span>: <span class="string">"2024-07-01T14:30:00.000Z"</span>
+  }
+]</div>
+
+                    <h4>Error Response (403):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Access denied"</span>
+}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="tweets">
+            <h2>🐦 Tweet Endpoints</h2>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/tweets</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get all tweets with pagination, sorted by creation date (newest first)</p>
+                    
+                    <h4>Query Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">page</code></td>
+                            <td>number</td>
+                            <td>1</td>
+                            <td>Page number for pagination</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">limit</code></td>
+                            <td>number</td>
+                            <td>20</td>
+                            <td>Number of tweets per page</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="tweets-url">http://localhost:3140</span>/api/tweets?page=1&limit=5</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"tweets"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="number">10</span>,
+      <span class="key">"userId"</span>: <span class="number">1</span>,
+      <span class="key">"content"</span>: <span class="string">"That moment when your code works on the first try... but you don't trust it 😂"</span>,
+      <span class="key">"likes"</span>: <span class="number">5</span>,
+      <span class="key">"retweets"</span>: <span class="number">2</span>,
+      <span class="key">"createdAt"</span>: <span class="string">"2024-06-27T13:30:00.000Z"</span>,
+      <span class="key">"user"</span>: {
+        <span class="key">"id"</span>: <span class="number">1</span>,
+        <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+        <span class="key">"email"</span>: <span class="string">"john@example.com"</span>,
+        <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>
+      }
+    },
+    {
+      <span class="key">"id"</span>: <span class="number">9</span>,
+      <span class="key">"userId"</span>: <span class="number">8</span>,
+      <span class="key">"content"</span>: <span class="string">"Kubernetes lesson learned: Always set resource limits. Your future self will thank you 💸"</span>,
+      <span class="key">"likes"</span>: <span class="number">8</span>,
+      <span class="key">"retweets"</span>: <span class="number">3</span>,
+      <span class="key">"createdAt"</span>: <span class="string">"2024-06-30T09:50:00.000Z"</span>,
+      <span class="key">"user"</span>: {
+        <span class="key">"id"</span>: <span class="number">8</span>,
+        <span class="key">"username"</span>: <span class="string">"devops_ninja"</span>,
+        <span class="key">"email"</span>: <span class="string">"devops@example.com"</span>,
+        <span class="key">"bio"</span>: <span class="string">"DevOps engineer | Kubernetes | Cloud architecture"</span>
+      }
+    }
+  ],
+  <span class="key">"pagination"</span>: {
+    <span class="key">"currentPage"</span>: <span class="number">1</span>,
+    <span class="key">"totalPages"</span>: <span class="number">2</span>,
+    <span class="key">"totalTweets"</span>: <span class="number">10</span>,
+    <span class="key">"hasNext"</span>: <span class="number">true</span>,
+    <span class="key">"hasPrev"</span>: <span class="number">false</span>
+  }
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/tweets/feed</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get personalized tweet feed for the authenticated user with like status</p>
+                    
+                    <h4>Query Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Default</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">page</code></td>
+                            <td>number</td>
+                            <td>1</td>
+                            <td>Page number for pagination</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">limit</code></td>
+                            <td>number</td>
+                            <td>20</td>
+                            <td>Number of tweets per page</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span> \
+  <span id="feed-url">http://localhost:3140</span>/api/tweets/feed?page=1&limit=10</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"tweets"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="number">10</span>,
+      <span class="key">"userId"</span>: <span class="number">1</span>,
+      <span class="key">"content"</span>: <span class="string">"That moment when your code works on the first try... 😂"</span>,
+      <span class="key">"likes"</span>: <span class="number">5</span>,
+      <span class="key">"retweets"</span>: <span class="number">2</span>,
+      <span class="key">"createdAt"</span>: <span class="string">"2024-06-27T13:30:00.000Z"</span>,
+      <span class="key">"likedByCurrentUser"</span>: <span class="number">true</span>,
+      <span class="key">"user"</span>: {
+        <span class="key">"id"</span>: <span class="number">1</span>,
+        <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+        <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>
+      }
+    }
+  ],
+  <span class="key">"pagination"</span>: {
+    <span class="key">"currentPage"</span>: <span class="number">1</span>,
+    <span class="key">"totalPages"</span>: <span class="number">2</span>,
+    <span class="key">"totalTweets"</span>: <span class="number">10</span>,
+    <span class="key">"hasNext"</span>: <span class="number">true</span>,
+    <span class="key">"hasPrev"</span>: <span class="number">false</span>
+  }
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/tweets/:id</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get a single tweet by ID with like status for authenticated users</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">id</code></td>
+                            <td>number</td>
+                            <td>Tweet ID</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="single-tweet-url">http://localhost:3140</span>/api/tweets/1</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"id"</span>: <span class="number">1</span>,
+  <span class="key">"userId"</span>: <span class="number">1</span>,
+  <span class="key">"content"</span>: <span class="string">"Just finished building an amazing React component! 🚀"</span>,
+  <span class="key">"likes"</span>: <span class="number">15</span>,
+  <span class="key">"retweets"</span>: <span class="number">5</span>,
+  <span class="key">"createdAt"</span>: <span class="string">"2024-06-30T10:30:00.000Z"</span>,
+  <span class="key">"user"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+    <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>
+  },
+  <span class="key">"likedByCurrentUser"</span>: <span class="number">false</span>,
+  <span class="key">"likers"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="number">2</span>,
+      <span class="key">"username"</span>: <span class="string">"jane_smith"</span>,
+      <span class="key">"bio"</span>: <span class="string">"UX designer who loves to code"</span>,
+      <span class="key">"likedAt"</span>: <span class="string">"2024-06-30T11:00:00.000Z"</span>
+    }
+  ]
+}</div>
+
+                    <h4>Error Response (404):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Tweet not found"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/tweets/user/:username</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get all tweets from a specific user</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">username</code></td>
+                            <td>string</td>
+                            <td>Username to get tweets from</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="user-tweets-url">http://localhost:3140</span>/api/tweets/user/john_doe</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">[
+  {
+    <span class="key">"id"</span>: <span class="number">10</span>,
+    <span class="key">"userId"</span>: <span class="number">1</span>,
+    <span class="key">"content"</span>: <span class="string">"That moment when your code works on the first try... but you don't trust it 😂"</span>,
+    <span class="key">"likes"</span>: <span class="number">5</span>,
+    <span class="key">"retweets"</span>: <span class="number">2</span>,
+    <span class="key">"createdAt"</span>: <span class="string">"2024-06-27T13:30:00.000Z"</span>,
+    <span class="key">"user"</span>: {
+      <span class="key">"id"</span>: <span class="number">1</span>,
+      <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+      <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>
+    }
+  },
+  {
+    <span class="key">"id"</span>: <span class="number">4</span>,
+    <span class="key">"userId"</span>: <span class="number">1</span>,
+    <span class="key">"content"</span>: <span class="string">"Coffee break = debugging break ☕️"</span>,
+    <span class="key">"likes"</span>: <span class="number">8</span>,
+    <span class="key">"retweets"</span>: <span class="number">1</span>,
+    <span class="key">"createdAt"</span>: <span class="string">"2024-07-01T15:20:00.000Z"</span>,
+    <span class="key">"user"</span>: {
+      <span class="key">"id"</span>: <span class="number">1</span>,
+      <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+      <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>
+    }
+  }
+]</div>
+
+                    <h4>Error Response (404):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"User not found"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/tweets/:id/stats</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Get detailed statistics for a tweet including top likers</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">id</code></td>
+                            <td>number</td>
+                            <td>Tweet ID</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="tweet-stats-url">http://localhost:3140</span>/api/tweets/1/stats</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"id"</span>: <span class="number">1</span>,
+  <span class="key">"likes"</span>: <span class="number">15</span>,
+  <span class="key">"retweets"</span>: <span class="number">5</span>,
+  <span class="key">"likerCount"</span>: <span class="number">15</span>,
+  <span class="key">"likers"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="number">2</span>,
+      <span class="key">"username"</span>: <span class="string">"jane_smith"</span>
+    },
+    {
+      <span class="key">"id"</span>: <span class="number">3</span>,
+      <span class="key">"username"</span>: <span class="string">"tech_guru"</span>
+    },
+    {
+      <span class="key">"id"</span>: <span class="number">4</span>,
+      <span class="key">"username"</span>: <span class="string">"sarah_codes"</span>
+    }
+  ]
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-path">/api/tweets</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Create a new tweet (max 280 characters)</p>
+                    
+                    <h4>Headers:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">Authorization</code></td>
+                            <td>Bearer YOUR_JWT_TOKEN</td>
+                            <td><span class="required">Required</span></td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">Content-Type</code></td>
+                            <td>application/json</td>
+                            <td><span class="required">Required</span></td>
+                        </tr>
+                    </table>
+
+                    <h4>Request Body:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">content</code></td>
+                            <td>string</td>
+                            <td><span class="required">Required</span></td>
+                            <td>Tweet content (max 280 characters)</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X POST <span id="create-tweet-url">http://localhost:3140</span>/api/tweets \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span> \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "content": "Hello Twitter Clone! 🚀 Building amazing things with #react #nodejs"
+  }'</span></div>
+
+                    <h4>Success Response (201):</h4>
+                    <div class="code-block">{
+  <span class="key">"id"</span>: <span class="number">11</span>,
+  <span class="key">"userId"</span>: <span class="number">1</span>,
+  <span class="key">"content"</span>: <span class="string">"Hello Twitter Clone! 🚀 Building amazing things with #react #nodejs"</span>,
+  <span class="key">"likes"</span>: <span class="number">0</span>,
+  <span class="key">"retweets"</span>: <span class="number">0</span>,
+  <span class="key">"createdAt"</span>: <span class="string">"2024-07-01T16:30:00.000Z"</span>,
+  <span class="key">"user"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"username"</span>: <span class="string">"john_doe"</span>,
+    <span class="key">"email"</span>: <span class="string">"john@example.com"</span>,
+    <span class="key">"bio"</span>: <span class="string">"Software developer and coffee enthusiast"</span>
+  }
+}</div>
+
+                    <h4>Error Response (400):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Tweet content must be 280 characters or less"</span>
+}</div>
+
+                    <h4>Error Response (401):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Access token required"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-path">/api/tweets/:id/like</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Like a tweet (increment like count)</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">id</code></td>
+                            <td>number</td>
+                            <td>Tweet ID to like</td>
+                        </tr>
+                    </table>
+
+                    <h4>Headers:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">Authorization</code></td>
+                            <td>Bearer YOUR_JWT_TOKEN</td>
+                            <td><span class="required">Required</span></td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X POST <span id="like-tweet-url">http://localhost:3140</span>/api/tweets/1/like \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span></div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Tweet liked successfully"</span>,
+  <span class="key">"tweet"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"likes"</span>: <span class="number">16</span>
+  }
+}</div>
+
+                    <h4>Error Response (400):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Tweet already liked by this user"</span>
+}</div>
+
+                    <h4>Error Response (404):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Tweet not found"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method delete">DELETE</span>
+                    <span class="endpoint-path">/api/tweets/:id/like</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Unlike a tweet (decrement like count)</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">id</code></td>
+                            <td>number</td>
+                            <td>Tweet ID to unlike</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X DELETE <span id="unlike-tweet-url">http://localhost:3140</span>/api/tweets/1/like \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span></div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Tweet unliked successfully"</span>,
+  <span class="key">"tweet"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"likes"</span>: <span class="number">15</span>
+  }
+}</div>
+
+                    <h4>Error Response (400):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Tweet not liked by this user"</span>
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-path">/api/tweets/:id/toggle-like</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Toggle like/unlike status for a tweet (convenient alternative to separate like/unlike endpoints)</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">id</code></td>
+                            <td>number</td>
+                            <td>Tweet ID to toggle like status</td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X POST <span id="toggle-like-url">http://localhost:3140</span>/api/tweets/1/toggle-like \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span></div>
+
+                    <h4>Success Response - Liked (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Tweet liked successfully"</span>,
+  <span class="key">"action"</span>: <span class="string">"liked"</span>,
+  <span class="key">"tweet"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"likes"</span>: <span class="number">16</span>
+  }
+}</div>
+
+                    <h4>Success Response - Unliked (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Tweet unliked successfully"</span>,
+  <span class="key">"action"</span>: <span class="string">"unliked"</span>,
+  <span class="key">"tweet"</span>: {
+    <span class="key">"id"</span>: <span class="number">1</span>,
+    <span class="key">"likes"</span>: <span class="number">15</span>
+  }
+}</div>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method delete">DELETE</span>
+                    <span class="endpoint-path">/api/tweets/:id</span>
+                    <span class="auth-badge">🔒 Auth Required</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Delete a tweet by ID (only the tweet author can delete their own tweets)</p>
+                    
+                    <h4>URL Parameters:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">id</code></td>
+                            <td>number</td>
+                            <td>Tweet ID to delete</td>
+                        </tr>
+                    </table>
+
+                    <h4>Headers:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Header</th>
+                            <th>Value</th>
+                            <th>Required</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">Authorization</code></td>
+                            <td>Bearer YOUR_JWT_TOKEN</td>
+                            <td><span class="required">Required</span></td>
+                        </tr>
+                    </table>
+
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X DELETE <span id="delete-tweet-url">http://localhost:3140</span>/api/tweets/11 \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span></div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Tweet deleted successfully"</span>
+}</div>
+
+                    <h4>Error Response (403):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"You can only delete your own tweets"</span>
+}</div>
+
+                    <h4>Error Response (404):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Tweet not found"</span>
+}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="utility">
+            <h2>🛠️ Utility Endpoints</h2>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-path">/api/health</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Check API health and get database statistics</p>
+                    
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl <span id="health-url">http://localhost:3140</span>/api/health</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"status"</span>: <span class="string">"healthy"</span>,
+  <span class="key">"timestamp"</span>: <span class="string">"2024-07-01T17:00:00.000Z"</span>,
+  <span class="key">"uptime"</span>: <span class="number">3600</span>,
+  <span class="key">"usersCount"</span>: <span class="number">8</span>,
+  <span class="key">"tweetsCount"</span>: <span class="number">10</span>
+}</div>
+
+                    <h4>Response Fields:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">status</code></td>
+                            <td>string</td>
+                            <td>API status ("healthy" if operational)</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">timestamp</code></td>
+                            <td>string</td>
+                            <td>Current server timestamp</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">uptime</code></td>
+                            <td>number</td>
+                            <td>Server uptime in seconds</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">usersCount</code></td>
+                            <td>number</td>
+                            <td>Total number of users in database</td>
+                        </tr>
+                        <tr>
+                            <td><code class="param-name">tweetsCount</code></td>
+                            <td>number</td>
+                            <td>Total number of tweets in database</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="endpoint-card">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-path">/api/reset</span>
+                </div>
+                <div class="endpoint-body">
+                    <p class="endpoint-description">Reset the database to its initial seed data. <strong style="color: #dc2626;">Use with caution!</strong> This will delete all current data and restore default users and tweets.</p>
+                    
+                    <h4>⚠️ Warning:</h4>
+                    <div style="background: #fef2f2; padding: 1rem; border-radius: 6px; margin: 1rem 0; border-left: 4px solid #dc2626;">
+                        <strong>This operation is destructive!</strong><br>
+                        • Deletes ALL existing users<br>
+                        • Deletes ALL existing tweets<br>
+                        • Deletes ALL existing likes<br>
+                        • Restores only the original seed data<br>
+                        • Cannot be undone
+                    </div>
+                    
+                    <h4>Example Request:</h4>
+                    <div class="code-block">curl -X POST <span id="reset-url">http://localhost:3140</span>/api/reset</div>
+
+                    <h4>Success Response (200):</h4>
+                    <div class="code-block">{
+  <span class="key">"message"</span>: <span class="string">"Data reset successfully"</span>
+}</div>
+
+                    <h4>Error Response (500):</h4>
+                    <div class="code-block">{
+  <span class="key">"error"</span>: <span class="string">"Failed to reset data"</span>
+}</div>
+
+                    <h4>What Gets Restored:</h4>
+                    <table class="param-table">
+                        <tr>
+                            <th>Data Type</th>
+                            <th>Count</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>Users</td>
+                            <td>8</td>
+                            <td>Default demo users with usernames: john_doe, jane_smith, tech_guru, sarah_codes, mike_data, ai_enthusiast, designwiz, devops_ninja</td>
+                        </tr>
+                        <tr>
+                            <td>Tweets</td>
+                            <td>10</td>
+                            <td>Sample tweets from the demo users</td>
+                        </tr>
+                        <tr>
+                            <td>Likes</td>
+                            <td>14</td>
+                            <td>Sample like relationships between users and tweets</td>
+                        </tr>
+                        <tr>
+                            <td>Passwords</td>
+                            <td>All users</td>
+                            <td>All demo users have password: <code>password123</code></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="examples">
+            <h2>✨ Complete Usage Examples</h2>
+            <p class="endpoint-description">Here are complete workflows for common operations with actual request/response examples.</p>
+
+            <h3>🔐 Complete Authentication Flow</h3>
+            <div class="code-block">
+<span class="comment"># 1. Register a new user</span>
+curl -X POST <span id="example-register-url">http://localhost:3140</span>/api/auth/register \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "testpassword"
+  }'</span>
+
+<span class="comment"># Expected Response (201):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "message": "User created successfully",</span>
+<span class="comment">#   "user": {</span>
+<span class="comment">#     "id": 9,</span>
+<span class="comment">#     "username": "testuser",</span>
+<span class="comment">#     "email": "test@example.com",</span>
+<span class="comment">#     "bio": "",</span>
+<span class="comment">#     "createdAt": "2024-07-01T12:00:00.000Z"</span>
+<span class="comment">#   },</span>
+<span class="comment">#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 2. Login with existing user</span>
+curl -X POST <span id="example-login-url">http://localhost:3140</span>/api/auth/login \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "username": "john_doe",
+    "password": "password123"
+  }'</span>
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "message": "Login successful",</span>
+<span class="comment">#   "user": {</span>
+<span class="comment">#     "id": 1,</span>
+<span class="comment">#     "username": "john_doe",</span>
+<span class="comment">#     "email": "john@example.com",</span>
+<span class="comment">#     "bio": "Software developer and coffee enthusiast"</span>
+<span class="comment">#   },</span>
+<span class="comment">#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 3. Use token to get your profile</span>
+curl -H <span class="string">"Authorization: Bearer YOUR_TOKEN_HERE"</span> \
+  <span id="example-profile-url">http://localhost:3140</span>/api/users/me
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "id": 1,</span>
+<span class="comment">#   "username": "john_doe",</span>
+<span class="comment">#   "email": "john@example.com",</span>
+<span class="comment">#   "bio": "Software developer and coffee enthusiast",</span>
+<span class="comment">#   "tweetsCount": 15,</span>
+<span class="comment">#   "likesGiven": 42,</span>
+<span class="comment">#   "likesReceived": 28</span>
+<span class="comment"># }</span></div>
+
+            <h3>🐦 Tweet Operations Workflow</h3>
+            <div class="code-block">
+<span class="comment"># 1. Get all tweets (public, no auth needed)</span>
+curl <span id="example-get-tweets-url">http://localhost:3140</span>/api/tweets?page=1&limit=5
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "tweets": [</span>
+<span class="comment">#     {</span>
+<span class="comment">#       "id": 10,</span>
+<span class="comment">#       "content": "That moment when your code works on the first try... 😂",</span>
+<span class="comment">#       "likes": 5,</span>
+<span class="comment">#       "user": { "username": "john_doe", "bio": "Software developer..." }</span>
+<span class="comment">#     }</span>
+<span class="comment">#   ],</span>
+<span class="comment">#   "pagination": { "currentPage": 1, "totalPages": 2, "totalTweets": 10 }</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 2. Create a new tweet (requires authentication)</span>
+curl -X POST <span id="example-create-tweet-url">http://localhost:3140</span>/api/tweets \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN_HERE"</span> \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "content": "My first tweet via API! 🎉 #bootcamp #react #nodejs"
+  }'</span>
+
+<span class="comment"># Expected Response (201):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "id": 11,</span>
+<span class="comment">#   "userId": 1,</span>
+<span class="comment">#   "content": "My first tweet via API! 🎉 #bootcamp #react #nodejs",</span>
+<span class="comment">#   "likes": 0,</span>
+<span class="comment">#   "retweets": 0,</span>
+<span class="comment">#   "createdAt": "2024-07-01T16:30:00.000Z",</span>
+<span class="comment">#   "user": {</span>
+<span class="comment">#     "username": "john_doe",</span>
+<span class="comment">#     "email": "john@example.com"</span>
+<span class="comment">#   }</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 3. Like the tweet you just created</span>
+curl -X POST <span id="example-like-url">http://localhost:3140</span>/api/tweets/11/toggle-like \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN_HERE"</span>
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "message": "Tweet liked successfully",</span>
+<span class="comment">#   "action": "liked",</span>
+<span class="comment">#   "tweet": {</span>
+<span class="comment">#     "id": 11,</span>
+<span class="comment">#     "likes": 1</span>
+<span class="comment">#   }</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 4. Get tweets from specific user</span>
+curl <span id="example-user-tweets-url">http://localhost:3140</span>/api/tweets/user/john_doe
+
+<span class="comment"># Expected Response (200): Array of tweets from john_doe</span></div>
+
+            <h3>🔍 Search and Discovery Workflow</h3>
+            <div class="code-block">
+<span class="comment"># 1. Search for users by keyword</span>
+curl <span id="example-search-url">http://localhost:3140</span>/api/users/search?q=developer&limit=3
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># [</span>
+<span class="comment">#   {</span>
+<span class="comment">#     "id": 1,</span>
+<span class="comment">#     "username": "john_doe",</span>
+<span class="comment">#     "bio": "Software developer and coffee enthusiast",</span>
+<span class="comment">#     "tweetsCount": 15,</span>
+<span class="comment">#     "likesGiven": 42</span>
+<span class="comment">#   },</span>
+<span class="comment">#   {</span>
+<span class="comment">#     "id": 4,</span>
+<span class="comment">#     "username": "sarah_codes",</span>
+<span class="comment">#     "bio": "Full-stack developer | React & Node.js",</span>
+<span class="comment">#     "tweetsCount": 8</span>
+<span class="comment">#   }</span>
+<span class="comment"># ]</span>
+
+<span class="comment"># 2. Get detailed user profile</span>
+curl <span id="example-get-user-url">http://localhost:3140</span>/api/users/jane_smith
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "id": 2,</span>
+<span class="comment">#   "username": "jane_smith",</span>
+<span class="comment">#   "email": "jane@example.com",</span>
+<span class="comment">#   "bio": "UX designer who loves to code",</span>
+<span class="comment">#   "tweetsCount": 8,</span>
+<span class="comment">#   "likesGiven": 15,</span>
+<span class="comment">#   "likesReceived": 22</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 3. Check API health and stats</span>
+curl <span id="example-health-url">http://localhost:3140</span>/api/health
+
+<span class="comment"># Expected Response (200):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "status": "healthy",</span>
+<span class="comment">#   "uptime": 3600,</span>
+<span class="comment">#   "usersCount": 8,</span>
+<span class="comment">#   "tweetsCount": 10</span>
+<span class="comment"># }</span></div>
+
+            <h3>⚠️ Error Handling Examples</h3>
+            <div class="code-block">
+<span class="comment"># 1. Invalid login credentials</span>
+curl -X POST <span id="example-error-login-url">http://localhost:3140</span>/api/auth/login \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "username": "nonexistent",
+    "password": "wrongpassword"
+  }'</span>
+
+<span class="comment"># Expected Response (401):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "error": "Invalid credentials"</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 2. Access protected endpoint without token</span>
+curl <span id="example-error-auth-url">http://localhost:3140</span>/api/users/me
+
+<span class="comment"># Expected Response (401):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "error": "Access token required"</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 3. Tweet too long (over 280 characters)</span>
+curl -X POST <span id="example-error-tweet-url">http://localhost:3140</span>/api/tweets \
+  -H <span class="string">"Authorization: Bearer YOUR_TOKEN"</span> \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d <span class="string">'{
+    "content": "This tweet is intentionally way too long to demonstrate the validation error that occurs when you try to post a tweet that exceeds the 280 character limit. The API will reject this request and return an appropriate error message to let you know that your tweet content is too long and needs to be shortened before it can be posted successfully."
+  }'</span>
+
+<span class="comment"># Expected Response (400):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "error": "Tweet content must be 280 characters or less"</span>
+<span class="comment"># }</span>
+
+<span class="comment"># 4. Try to access non-existent tweet</span>
+curl <span id="example-error-notfound-url">http://localhost:3140</span>/api/tweets/99999
+
+<span class="comment"># Expected Response (404):</span>
+<span class="comment"># {</span>
+<span class="comment">#   "error": "Tweet not found"</span>
+<span class="comment"># }</span></div>
+
+            <h3>🛠️ Development Tips</h3>
+            <div style="background: #f0f9ff; padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+                <h4 style="margin-top: 0;">💡 Pro Tips for API Testing:</h4>
+                <ul style="margin: 0;">
+                    <li><strong>Save your token:</strong> After login, copy the JWT token and use it in subsequent requests</li>
+                    <li><strong>Use tools:</strong> Postman, Insomnia, or httpie make API testing easier than curl</li>
+                    <li><strong>Check status codes:</strong> 200 = success, 401 = unauthorized, 404 = not found, 500 = server error</li>
+                    <li><strong>Reset data:</strong> Use <code>POST /api/reset</code> to restore original demo data anytime</li>
+                    <li><strong>Health check:</strong> Use <code>GET /api/health</code> to verify the API is running</li>
+                    <li><strong>Content-Type:</strong> Always include <code>Content-Type: application/json</code> for POST requests</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🔧 API Patterns & Best Practices</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                
+                <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #22c55e;">
+                    <h4 style="margin-top: 0; color: #22c55e;">✅ Authentication Flow</h4>
+                    <ol style="margin: 0; padding-left: 1.2rem;">
+                        <li>Register or login to get JWT token</li>
+                        <li>Include token in <code>Authorization: Bearer TOKEN</code> header</li>
+                        <li>Token expires after 7 days - login again if needed</li>
+                        <li>Store token securely in your app (localStorage, etc.)</li>
+                    </ol>
+                </div>
+
+                <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                    <h4 style="margin-top: 0; color: #3b82f6;">📡 HTTP Status Codes</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem; list-style: none;">
+                        <li><code>200</code> - Success</li>
+                        <li><code>201</code> - Created (new resource)</li>
+                        <li><code>400</code> - Bad Request (validation error)</li>
+                        <li><code>401</code> - Unauthorized (missing/invalid token)</li>
+                        <li><code>403</code> - Forbidden (access denied)</li>
+                        <li><code>404</code> - Not Found</li>
+                        <li><code>409</code> - Conflict (duplicate data)</li>
+                        <li><code>500</code> - Server Error</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                    <h4 style="margin-top: 0; color: #f59e0b;">⚡ Rate Limits & Performance</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem;">
+                        <li><strong>No rate limits</strong> currently implemented</li>
+                        <li><strong>Pagination:</strong> Use <code>page</code> & <code>limit</code> parameters</li>
+                        <li><strong>Caching:</strong> Tweet data updates in real-time</li>
+                        <li><strong>Performance:</strong> SQLite with indexes for fast queries</li>
+                    </ul>
+                </div>
+
+                <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #ef4444;">
+                    <h4 style="margin-top: 0; color: #ef4444;">🔐 Security Notes</h4>
+                    <ul style="margin: 0; padding-left: 1.2rem;">
+                        <li><strong>HTTPS:</strong> Use HTTPS in production</li>
+                        <li><strong>CORS:</strong> Configured for all origins in development</li>
+                        <li><strong>Passwords:</strong> Bcrypt hashed (salt rounds: 10)</li>
+                        <li><strong>JWT:</strong> HS256 algorithm with secret key</li>
+                        <li><strong>Validation:</strong> Input sanitization on all endpoints</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 API Summary</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 2rem;">19</h3>
+                    <p style="margin: 0.5rem 0 0 0;">Total Endpoints</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 2rem;">2</h3>
+                    <p style="margin: 0.5rem 0 0 0;">Auth Endpoints</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 2rem;">4</h3>
+                    <p style="margin: 0.5rem 0 0 0;">User Endpoints</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 2rem;">10</h3>
+                    <p style="margin: 0.5rem 0 0 0;">Tweet Endpoints</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                    <h3 style="margin: 0; font-size: 2rem;">3</h3>
+                    <p style="margin: 0.5rem 0 0 0;">Utility Endpoints</p>
+                </div>
+            </div>
+
+            <div style="background: #f8fafc; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                <h3 style="margin-top: 0; text-align: center; color: #1e293b;">🚀 Ready for Production</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <h4 style="color: #1da1f2; margin: 0 0 0.5rem 0;">Backend Features</h4>
+                        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem;">
+                            <li>RESTful API design</li>
+                            <li>JWT authentication</li>
+                            <li>SQLite database with indexes</li>
+                            <li>Comprehensive error handling</li>
+                            <li>Request validation</li>
+                            <li>CORS configuration</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #1da1f2; margin: 0 0 0.5rem 0;">Data Models</h4>
+                        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem;">
+                            <li>Users with profiles & stats</li>
+                            <li>Tweets with content & metadata</li>
+                            <li>Likes with user relationships</li>
+                            <li>Foreign key constraints</li>
+                            <li>Automatic timestamps</li>
+                            <li>Data integrity checks</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #1da1f2; margin: 0 0 0.5rem 0;">Developer Experience</h4>
+                        <ul style="margin: 0; padding-left: 1.2rem; font-size: 0.9rem;">
+                            <li>Complete API documentation</li>
+                            <li>Sample requests & responses</li>
+                            <li>Error code explanations</li>
+                            <li>Demo data for testing</li>
+                            <li>Health check endpoint</li>
+                            <li>Database reset functionality</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer style="background: #1e293b; color: white; padding: 2rem; border-radius: 12px; margin: 3rem 0 0 0; text-align: center;">
+            <h3 style="margin: 0 0 1rem 0; color: #1da1f2;">🎉 Stack Puno, pero Frontend Muna Bootcamp</h3>
+            <p style="margin: 0 0 1rem 0; font-size: 1.1rem;">Complete Twitter Clone API - Ready for Frontend Integration</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 1.5rem 0;">
+                <div style="text-align: center;">
+                    <strong style="color: #1da1f2; font-size: 1.2rem;">19</strong><br>
+                    <span style="font-size: 0.9rem;">API Endpoints</span>
+                </div>
+                <div style="text-align: center;">
+                    <strong style="color: #1da1f2; font-size: 1.2rem;">8</strong><br>
+                    <span style="font-size: 0.9rem;">Demo Users</span>
+                </div>
+                <div style="text-align: center;">
+                    <strong style="color: #1da1f2; font-size: 1.2rem;">10</strong><br>
+                    <span style="font-size: 0.9rem;">Sample Tweets</span>
+                </div>
+                <div style="text-align: center;">
+                    <strong style="color: #1da1f2; font-size: 1.2rem;">100%</strong><br>
+                    <span style="font-size: 0.9rem;">Production Ready</span>
+                </div>
+            </div>
+            <p style="margin: 1rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">
+                Built with Node.js • Express • SQLite • JWT • Love ❤️
+            </p>
+        </footer>
+    </div>
+
+    <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">⬆️</button>
+
+    <script>
+        
+        function updateUrls() {
+            const currentHost = window.location.host;
+            if (currentHost !== 'localhost:3140') {
+                const newBaseUrl = `http://${currentHost}`;
+                
+                
+                document.getElementById('api-base-url').textContent = newBaseUrl;
+                
+                
+                const urlElements = [
+                    'register-url', 'login-url', 'users-me-url', 'search-url', 'user-profile-url',
+                    'activity-url', 'tweets-url', 'feed-url', 'single-tweet-url', 'user-tweets-url',
+                    'tweet-stats-url', 'create-tweet-url', 'like-tweet-url', 'unlike-tweet-url', 
+                    'toggle-like-url', 'delete-tweet-url', 'health-url', 'reset-url',
+                    'example-register-url', 'example-login-url', 'example-profile-url',
+                    'example-get-tweets-url', 'example-create-tweet-url', 'example-like-url',
+                    'example-user-tweets-url', 'example-search-url', 'example-get-user-url',
+                    'example-health-url', 'example-error-login-url', 'example-error-auth-url',
+                    'example-error-tweet-url', 'example-error-notfound-url'
+                ];
+                
+                urlElements.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.textContent = newBaseUrl;
+                    }
+                });
+            }
+        }
+
+        
+        let mybutton = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', updateUrls);
+    </script>
+</body>
+</html>
