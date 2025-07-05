@@ -787,7 +787,7 @@
 								"tweets"
 							]
 						},
-						"description": "Get detailed statistics for a tweet including top likers"
+						"description": "Create a new tweet (max 280 characters)"
 					},
 					"response": [
 						{
