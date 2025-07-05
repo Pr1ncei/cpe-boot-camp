@@ -1963,6 +1963,18 @@
 						"header": []
 					},
 					"response": []
+				},
+				{
+					"name": "Check Health Copy",
+					"id": "36248379-016cf476-573f-4b5a-8bb7-caf766e8b1b9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "36248379-7d416697-c700-4377-ac3a-3ad3239dd638"
