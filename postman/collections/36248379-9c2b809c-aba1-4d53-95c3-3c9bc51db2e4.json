@@ -1165,7 +1165,7 @@
 								}
 							]
 						},
-						"method": "DELETE",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
@@ -1183,24 +1183,23 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/tweets/:id/like",
+							"raw": "{{BASE_URL}}/tweets/:id/toggle-like",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
 								"tweets",
 								":id",
-								"like"
+								"toggle-like"
 							],
 							"variable": [
 								{
-									"id": "dcbe8632-526d-421d-bf75-222d3c942589",
 									"key": "id",
 									"value": "1"
 								}
 							]
 						},
-						"description": "Unlike a tweet (decrement like count)"
+						"description": "Toggle like/unlike status for a tweet (convenient alternative to separate like/unlike endpoints)"
 					},
 					"response": [
 						{
