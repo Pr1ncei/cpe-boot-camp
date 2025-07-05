@@ -916,7 +916,7 @@
 					"response": [
 						{
 							"id": "36248379-6170a206-f92e-4cd0-9877-915583200593",
-							"name": "🐦 Create Tweet Copy",
+							"name": "Success Like Tweet",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
