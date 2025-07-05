@@ -1047,10 +1047,10 @@
 					},
 					"response": [
 						{
-							"id": "36248379-ce5ac5c3-0a13-46fd-9a7d-b76441fc6375",
-							"name": "Success Like Tweet",
+							"id": "36248379-e0d39984-1a69-4c35-acdf-2daf61147c8c",
+							"name": "🐦 Like Tweet Copy",
 							"originalRequest": {
-								"method": "POST",
+								"method": "DELETE",
 								"header": [
 									{
 										"key": "Accept",
@@ -1080,7 +1080,7 @@
 									"variable": [
 										{
 											"key": "id",
-											"value": "4"
+											"value": "1"
 										}
 									]
 								}
@@ -1107,15 +1107,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "65"
+									"value": "67"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"41-0JCNWY3czsLbC4dTqnt97+Q3+OQ\""
+									"value": "W/\"43-ZITFmJeMLd6eLZAVCdMDL4D9eys\""
 								},
 								{
 									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:41:49 GMT"
+									"value": "Sat, 05 Jul 2025 14:42:47 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1128,7 +1128,7 @@
 							],
 							"cookie": [],
 							"responseTime": null,
-							"body": "{\n    \"message\": \"Tweet liked successfully\",\n    \"tweet\": {\n        \"id\": 4,\n        \"likes\": 2\n    }\n}"
+							"body": "{\n    \"message\": \"Tweet unliked successfully\",\n    \"tweet\": {\n        \"id\": 1,\n        \"likes\": 3\n    }\n}"
 						}
 					]
 				}
