@@ -1205,7 +1205,7 @@
 					"response": [
 						{
 							"id": "36248379-874141a7-a6a9-460e-8bee-fe885a1fe727",
-							"name": "🐦 Unlike Tweet Copy",
+							"name": "🐦 Success Like Tweet",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1286,6 +1286,90 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"message\": \"Tweet liked successfully\",\n    \"action\": \"liked\",\n    \"tweet\": {\n        \"id\": 1,\n        \"likes\": 4\n    }\n}"
+						},
+						{
+							"id": "36248379-1b94507f-ce17-4c38-8c51-f9a6cf0e1c19",
+							"name": "🐦 Unlike Tweet Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id/toggle-like",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id",
+										"toggle-like"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-FZgClVNK9KBPPOgOKbgtIhxTrFY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Jul 2025 14:44:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"message\": \"Tweet unliked successfully\",\n    \"action\": \"unliked\",\n    \"tweet\": {\n        \"id\": 1,\n        \"likes\": 3\n    }\n}"
 						}
 					]
 				}
