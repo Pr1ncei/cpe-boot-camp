@@ -867,6 +867,130 @@
 							"body": "{\n    \"id\": 16,\n    \"userId\": 1,\n    \"content\": \"sample content here\",\n    \"likes\": 0,\n    \"retweets\": 0,\n    \"createdAt\": \"2025-07-05T14:40:02.933Z\",\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"john_doe\",\n        \"email\": \"john@example.com\",\n        \"bio\": \"Software developer and coffee enthusiast\",\n        \"createdAt\": \"2024-01-15T00:00:00.000Z\"\n    }\n}"
 						}
 					]
+				},
+				{
+					"name": "🐦 Create Tweet Copy",
+					"id": "36248379-c7215504-f0ba-4026-aa78-030f21556c1c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/tweets",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tweets"
+							]
+						},
+						"description": "Create a new tweet (max 280 characters)"
+					},
+					"response": [
+						{
+							"id": "36248379-4355f656-6cc0-4483-8c23-d8aaa3162d20",
+							"name": "Success Create Tweet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "267"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10b-BeL+b2RBowKjDjhKFWfwUf/mKeA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Jul 2025 14:40:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 16,\n    \"userId\": 1,\n    \"content\": \"sample content here\",\n    \"likes\": 0,\n    \"retweets\": 0,\n    \"createdAt\": \"2025-07-05T14:40:02.933Z\",\n    \"user\": {\n        \"id\": 1,\n        \"username\": \"john_doe\",\n        \"email\": \"john@example.com\",\n        \"bio\": \"Software developer and coffee enthusiast\",\n        \"createdAt\": \"2024-01-15T00:00:00.000Z\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "36248379-2a6336b0-8ce3-4049-9b34-b69698d75bfb"
