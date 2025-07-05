@@ -918,7 +918,7 @@
 								}
 							]
 						},
-						"description": "Create a new tweet (max 280 characters)"
+						"description": "Delete a tweet by ID (only the tweet author can delete their own tweets)"
 					},
 					"response": [
 						{
