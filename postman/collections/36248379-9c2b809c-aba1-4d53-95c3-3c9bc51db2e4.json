@@ -41,7 +41,7 @@
 					"response": [
 						{
 							"id": "36248379-beaf0213-d1b7-4aeb-a694-e928449ede59",
-							"name": "🔒 Register User",
+							"name": "Success Register",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -1955,18 +1955,6 @@
 				{
 					"name": "Check Health",
 					"id": "36248379-7bb734b4-696d-42c3-9ad1-b7304ef9e6a4",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "Check Health Copy",
-					"id": "36248379-016cf476-573f-4b5a-8bb7-caf766e8b1b9",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
