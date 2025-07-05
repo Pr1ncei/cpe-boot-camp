@@ -751,7 +751,17 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
 						"header": [
 							{
 								"key": "Accept",
@@ -759,22 +769,22 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{BASE_URL}}/tweets/:id/stats",
+							"raw": "{{BASE_URL}}/tweets",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"tweets",
-								":id",
-								"stats"
-							],
-							"variable": [
-								{
-									"id": "a88ee660-f1c7-4b26-8285-01a8bb081d74",
-									"key": "id",
-									"value": "1"
-								}
+								"tweets"
 							]
 						},
 						"description": "Get detailed statistics for a tweet including top likers"
