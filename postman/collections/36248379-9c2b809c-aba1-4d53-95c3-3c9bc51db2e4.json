@@ -1149,7 +1149,7 @@
 					]
 				},
 				{
-					"name": "🐦 Unlike Tweet Copy",
+					"name": "🐦 Toggle Like/Unlike",
 					"id": "36248379-a632b1cd-f3a4-48ff-b96e-1426dfbd7c0a",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
