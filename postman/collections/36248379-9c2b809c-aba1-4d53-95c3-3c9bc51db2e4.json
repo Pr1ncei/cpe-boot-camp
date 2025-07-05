@@ -792,7 +792,7 @@
 					"response": [
 						{
 							"id": "36248379-fa76dea2-9391-4d42-9a67-c450a60f7117",
-							"name": "🐦 Get Tweet Stats Copy",
+							"name": "Success Create Tweet",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
