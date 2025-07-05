@@ -1951,7 +1951,20 @@
 		},
 		{
 			"name": "🛠️ Utility",
-			"item": [],
+			"item": [
+				{
+					"name": "Check Health",
+					"id": "36248379-7bb734b4-696d-42c3-9ad1-b7304ef9e6a4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "36248379-7d416697-c700-4377-ac3a-3ad3239dd638"
 		}
 	],
