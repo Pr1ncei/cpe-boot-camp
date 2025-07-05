@@ -903,15 +903,23 @@
 							}
 						},
 						"url": {
-							"raw": "{{BASE_URL}}/tweets",
+							"raw": "{{BASE_URL}}/tweets/:id/like",
 							"host": [
 								"{{BASE_URL}}"
 							],
 							"path": [
-								"tweets"
+								"tweets",
+								":id",
+								"like"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
 							]
 						},
-						"description": "Create a new tweet (max 280 characters)"
+						"description": "Like a tweet (increment like count)"
 					},
 					"response": [
 						{
