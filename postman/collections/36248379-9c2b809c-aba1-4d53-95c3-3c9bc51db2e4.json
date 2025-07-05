@@ -869,7 +869,7 @@
 					]
 				},
 				{
-					"name": "🐦 Create Tweet Copy",
+					"name": "🐦 Delete Tweet",
 					"id": "36248379-4e90b3f0-a7bf-4e35-a78b-3b0f8ebef5a0",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
