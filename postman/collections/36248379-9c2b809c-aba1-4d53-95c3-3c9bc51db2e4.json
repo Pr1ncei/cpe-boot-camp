@@ -743,6 +743,119 @@
 							"body": "{\n    \"id\": 1,\n    \"likes\": 3,\n    \"retweets\": 0,\n    \"likerCount\": 3,\n    \"likers\": [\n        {\n            \"id\": 3,\n            \"username\": \"tech_guru\"\n        },\n        {\n            \"id\": 4,\n            \"username\": \"sarah_codes\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"jane_smith\"\n        }\n    ]\n}"
 						}
 					]
+				},
+				{
+					"name": "🐦 Create Tweet",
+					"id": "36248379-7aba1bfe-4bc9-41ea-a160-e8216f9a40b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/tweets/:id/stats",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"tweets",
+								":id",
+								"stats"
+							],
+							"variable": [
+								{
+									"id": "a88ee660-f1c7-4b26-8285-01a8bb081d74",
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get detailed statistics for a tweet including top likers"
+					},
+					"response": [
+						{
+							"id": "36248379-cc6cb6a0-0af6-4fca-8a62-20b659ffffc6",
+							"name": "Success Get Tweet Stats",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id/stats",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id",
+										"stats"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"9c-FdpQKiAp0idMyNIC2YaYrV13Xe4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 05 Jul 2025 14:31:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": 1,\n    \"likes\": 3,\n    \"retweets\": 0,\n    \"likerCount\": 3,\n    \"likers\": [\n        {\n            \"id\": 3,\n            \"username\": \"tech_guru\"\n        },\n        {\n            \"id\": 4,\n            \"username\": \"sarah_codes\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"jane_smith\"\n        }\n    ]\n}"
+						}
+					]
 				}
 			],
 			"id": "36248379-2a6336b0-8ce3-4049-9b34-b69698d75bfb"
