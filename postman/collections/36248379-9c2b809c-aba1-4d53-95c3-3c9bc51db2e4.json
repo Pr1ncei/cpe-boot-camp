@@ -393,6 +393,77 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Password must be at least 6 characters long\"\n}"
+						},
+						{
+							"id": "36248379-06aee2d9-a870-45cc-8103-a9c3e4552ba8",
+							"name": "🔒 Register User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"gregory123\",\r\n    \"password\": \"password123\",\r\n    \"email\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-bJczh8NxC0G6Fo17yDpPQM9PMOQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:17:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Valid email is required\"\n}"
 						}
 					]
 				},
