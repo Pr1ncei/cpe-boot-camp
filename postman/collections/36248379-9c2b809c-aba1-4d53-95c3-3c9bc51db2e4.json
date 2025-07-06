@@ -1848,6 +1848,81 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Tweets for @john_doe retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"userId\": 1,\n            \"content\": \"That moment when your code works on the first try... but you don't trust it 😂\",\n            \"likes\": 0,\n            \"retweets\": 0,\n            \"createdAt\": \"2024-06-27T05:30:00.000Z\",\n            \"user\": {\n                \"id\": 1,\n                \"username\": \"john_doe\",\n                \"bio\": \"Software developer and coffee enthusiast\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"id": "36248379-afb1b7b0-1335-4a39-80ab-7eaf740323b3",
+							"name": "User not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/user/:username",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										"user",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "john_doex"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-tuBbUn8xKrOFn6dvskwByyx+FeU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:25:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"User not found\"\n}"
 						}
 					]
 				},
