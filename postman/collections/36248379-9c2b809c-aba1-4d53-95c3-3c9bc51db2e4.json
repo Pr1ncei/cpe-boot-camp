@@ -3458,7 +3458,7 @@
 					"response": [
 						{
 							"id": "36248379-0d17092a-cceb-415a-8be9-b5a5e1f5e073",
-							"name": "🙆‍♂️ Search by Username",
+							"name": "Retrieved User",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
