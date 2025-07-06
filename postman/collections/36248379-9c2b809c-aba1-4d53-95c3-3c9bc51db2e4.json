@@ -1715,7 +1715,92 @@
 						},
 						"description": "Like a tweet (increment like count)"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-c6cc7945-35bd-4270-8b83-9e7ab9c77ebb",
+							"name": "Invalid Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id/like",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id",
+										"like"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-GNDyEGK1yBKJB1sFHYU2n5ZGC54\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:22:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"error\": \"Invalid or expired token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "🐦 Unlike Tweet",
