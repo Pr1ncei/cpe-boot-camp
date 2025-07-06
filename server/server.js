@@ -31,33 +31,52 @@ app.get("/api/health", (req, res) => {
 	const { getStats } = require("./config/database");
 	const stats = getStats();
 
-	res.json({
-		status: "healthy",
-		timestamp: new Date(),
-		uptime: process.uptime(),
-		usersCount: stats.users,
-		tweetsCount: stats.tweets,
+	res.status(200).json({
+		status: "success",
+		message: "Server is running and database is connected",
+		data: {
+			timestamp: new Date().toISOString(),
+			uptime: process.uptime(),
+			usersCount: stats.users,
+			tweetsCount: stats.tweets,
+		},
 	});
 });
 
+// Reset Database Endpoint
 app.post("/api/reset", async (req, res) => {
 	try {
 		await seedData();
-		res.json({ message: "Data reset successfully" });
+		res.status(200).json({
+			status: "success",
+			message: "Database reset successfully",
+			data: {
+				timestamp: new Date().toISOString(),
+				action: "reset_database",
+			},
+		});
 	} catch (error) {
 		console.error("Reset error:", error);
-		res.status(500).json({ error: "Failed to reset data" });
+		res.status(500).json({
+			status: "error",
+			message: "Failed to reset database",
+		});
 	}
 });
 
 app.use("/", documentationRoutes);
 
+// 404 Handler for unknown routes
 app.use(/(.*)/, (req, res) => {
 	console.log(`❌ 404 - Route not found: ${req.method} ${req.originalUrl}`);
 	res.status(404).json({
-		error: "Endpoint not found",
-		requestedPath: req.originalUrl,
-		method: req.method,
+		status: "error",
+		message: "Endpoint not found",
+		data: {
+			requestedPath: req.originalUrl,
+			method: req.method,
+			timestamp: new Date().toISOString(),
+		},
 	});
 });
 

@@ -1,77 +1,82 @@
 // middleware/errorHandler.js
 
-const { AppError } = require("../utils/customErrors");
+const errorHandler = (err, req, res, next) => {
+	console.error("Error:", err.stack);
 
-const handleJWTError = () => new AppError("Invalid token. Please log in again.", 401);
+	// Default error response structure
+	const errorResponse = {
+		status: "error",
+		message: "Internal server error",
+	};
 
-const handleJWTExpiredError = () => new AppError("Your token has expired. Please log in again.", 401);
-
-const handleSQLiteConstraintError = (err) => {
-	if (err.code === "SQLITE_CONSTRAINT_UNIQUE") {
-		const field = err.message.includes("username") ? "username" : err.message.includes("email") ? "email" : "field";
-		return new AppError(`This ${field} already exists. Please choose another.`, 409);
+	// JWT Errors
+	if (err.name === "JsonWebTokenError") {
+		return res.status(401).json({
+			status: "error",
+			message: "Invalid token",
+		});
 	}
 
-	if (err.code === "SQLITE_CONSTRAINT_FOREIGN") {
-		return new AppError("Referenced resource does not exist.", 400);
+	if (err.name === "TokenExpiredError") {
+		return res.status(401).json({
+			status: "error",
+			message: "Token expired",
+		});
 	}
 
-	if (err.code === "SQLITE_CONSTRAINT_CHECK") {
-		return new AppError("Data validation failed. Please check your input.", 400);
-	}
-
-	return new AppError("Database constraint violation.", 400);
-};
-
-const handleValidationError = (err) => {
-	return new AppError(err.message, 400);
-};
-
-const sendErrorDev = (err, res) => {
-	res.status(err.statusCode).json({
-		status: err.status,
-		error: err,
-		message: err.message,
-		stack: err.stack,
-	});
-};
-
-const sendErrorProd = (err, res) => {
-	// Operational, trusted error: send message to client
-	if (err.isOperational) {
-		res.status(err.statusCode).json({
-			status: err.status,
+	// Validation Errors
+	if (err.name === "ValidationError") {
+		return res.status(400).json({
+			status: "error",
 			message: err.message,
 		});
 	}
-	// Programming or other unknown error: don't leak error details
-	else {
-		console.error("ERROR 💥", err);
-		res.status(500).json({
+
+	// SQLite Database Errors
+	if (err.code && err.code.startsWith("SQLITE_")) {
+		if (err.code === "SQLITE_CONSTRAINT_UNIQUE") {
+			const field = err.message.includes("username")
+				? "username"
+				: err.message.includes("email")
+				? "email"
+				: "field";
+			return res.status(409).json({
+				status: "error",
+				message: `This ${field} already exists`,
+			});
+		}
+
+		const response = {
 			status: "error",
-			message: "Something went wrong!",
+			message: "Database error",
+		};
+
+		if (process.env.NODE_ENV === "development") {
+			response.data = { details: err.message };
+		}
+
+		return res.status(500).json(response);
+	}
+
+	// Custom Application Errors (if you're using statusCode)
+	if (err.statusCode) {
+		return res.status(err.statusCode).json({
+			status: "error",
+			message: err.message,
 		});
 	}
-};
 
-const errorHandler = (err, req, res, next) => {
-	err.statusCode = err.statusCode || 500;
-	err.status = err.status || "error";
+	// Default 500 error
+	const response = {
+		status: "error",
+		message: err.message || "Internal server error",
+	};
 
 	if (process.env.NODE_ENV === "development") {
-		sendErrorDev(err, res);
-	} else {
-		let error = { ...err };
-		error.message = err.message;
-
-		// Handle specific error types
-		if (error.name === "JsonWebTokenError") error = handleJWTError();
-		if (error.name === "TokenExpiredError") error = handleJWTExpiredError();
-		if (error.code && error.code.startsWith("SQLITE_CONSTRAINT")) error = handleSQLiteConstraintError(error);
-		if (error.name === "ValidationError") error = handleValidationError(error);
-
-		sendErrorProd(error, res);
+		response.data = { stack: err.stack };
 	}
+
+	res.status(500).json(response);
 };
 
 module.exports = errorHandler;
