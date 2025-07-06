@@ -183,7 +183,7 @@
 						},
 						{
 							"id": "36248379-86d29414-cb38-498e-a325-fbb4c8e7cbb1",
-							"name": "User Registered Successfully",
+							"name": "User Registered Successful",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
