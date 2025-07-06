@@ -146,7 +146,12 @@ router.delete("/:id", authenticateToken, (req, res, next) => {
 	try {
 		const tweetId = parseInt(req.params.id);
 		deleteTweetById(tweetId, req.user.userId);
-		res.status(204).send(); // 204 No Content (successful deletion)
+
+		res.status(200).json({
+			message: "Tweet deleted successfully",
+			deletedTweetId: tweetId,
+			timestamp: new Date().toISOString(),
+		});
 	} catch (error) {
 		next(error);
 	}
