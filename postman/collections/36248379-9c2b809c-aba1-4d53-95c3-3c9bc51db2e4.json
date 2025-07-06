@@ -84,7 +84,79 @@
 						},
 						"description": "Login with existing credentials (username or email)"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-dfdd2230-178a-4ad2-8445-b14f41bc788b",
+							"name": "🔒 Login User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"john_doe\",\r\n    \"password\":\"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/login",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "365"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16d-3VkuhZKBPaRP3grpbBwwGgx0hQQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:13:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Login successful\",\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"username\": \"john_doe\",\n            \"email\": \"john@example.com\",\n            \"bio\": \"Software developer and coffee enthusiast\",\n            \"createdAt\": \"2024-01-15T00:00:00.000Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc1MTgwNzYxMiwiZXhwIjoxNzUyNDEyNDEyfQ.Kjqb6DoE3p0JZnC7aya9dy_FD8JRiu7Yd4EgkHM4BZ8\"\n    }\n}"
+						}
+					]
 				}
 			],
 			"id": "36248379-b85cef90-82d1-451e-9b79-664e685780ff"
@@ -484,92 +556,7 @@
 						},
 						"description": "Like a tweet (increment like count)"
 					},
-					"response": [
-						{
-							"id": "36248379-6170a206-f92e-4cd0-9877-915583200593",
-							"name": "Success Like Tweet",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/tweets/:id/like",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"tweets",
-										":id",
-										"like"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "4"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "65"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"41-0JCNWY3czsLbC4dTqnt97+Q3+OQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:41:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Tweet liked successfully\",\n    \"tweet\": {\n        \"id\": 4,\n        \"likes\": 2\n    }\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🐦 Unlike Tweet",
@@ -624,92 +611,7 @@
 						},
 						"description": "Unlike a tweet (decrement like count)"
 					},
-					"response": [
-						{
-							"id": "36248379-e0d39984-1a69-4c35-acdf-2daf61147c8c",
-							"name": "🐦 Success Unlike Tweet",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/tweets/:id/like",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"tweets",
-										":id",
-										"like"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "67"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"43-ZITFmJeMLd6eLZAVCdMDL4D9eys\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:42:47 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Tweet unliked successfully\",\n    \"tweet\": {\n        \"id\": 1,\n        \"likes\": 3\n    }\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🐦 Toggle Like/Unlike",
@@ -764,176 +666,7 @@
 						},
 						"description": "Toggle like/unlike status for a tweet (convenient alternative to separate like/unlike endpoints)"
 					},
-					"response": [
-						{
-							"id": "36248379-874141a7-a6a9-460e-8bee-fe885a1fe727",
-							"name": "🐦 Success Like Tweet",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/tweets/:id/toggle-like",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"tweets",
-										":id",
-										"toggle-like"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "82"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"52-+rB+z+kQ7GIvVFaQpI/wiYBySx8\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:44:37 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Tweet liked successfully\",\n    \"action\": \"liked\",\n    \"tweet\": {\n        \"id\": 1,\n        \"likes\": 4\n    }\n}"
-						},
-						{
-							"id": "36248379-1b94507f-ce17-4c38-8c51-f9a6cf0e1c19",
-							"name": "🐦 Success Unlike Tweet",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/tweets/:id/toggle-like",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"tweets",
-										":id",
-										"toggle-like"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "86"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"56-FZgClVNK9KBPPOgOKbgtIhxTrFY\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:44:54 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Tweet unliked successfully\",\n    \"action\": \"unliked\",\n    \"tweet\": {\n        \"id\": 1,\n        \"likes\": 3\n    }\n}"
-						}
-					]
+					"response": []
 				}
 			],
 			"id": "36248379-2a6336b0-8ce3-4049-9b34-b69698d75bfb"
@@ -972,70 +705,7 @@
 						},
 						"description": "Get current authenticated user's profile with statistics"
 					},
-					"response": [
-						{
-							"id": "36248379-3ab3630d-4220-46f6-95fa-5e994b71cf75",
-							"name": "Success Get Current User",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/users/me",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"users",
-										"me"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "194"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"c2-q7kX9g0DPTwp7JzhO+Yfxa8Dweg\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:23:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"id\": 1,\n    \"username\": \"john_doe\",\n    \"email\": \"john@example.com\",\n    \"bio\": \"Software developer and coffee enthusiast\",\n    \"createdAt\": \"2024-01-15T00:00:00.000Z\",\n    \"tweetsCount\": 3,\n    \"likesGiven\": 3,\n    \"likesReceived\": 4\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🙆‍♂️ Search User/Bio",
@@ -1078,80 +748,7 @@
 						},
 						"description": "Search for users by username or bio content"
 					},
-					"response": [
-						{
-							"id": "36248379-496ae5c5-4c4a-482a-9f0c-0b74f8d13655",
-							"name": "Success Search User",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/users/search?q=john_doe&limit=1",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"users",
-										"search"
-									],
-									"query": [
-										{
-											"key": "q",
-											"value": "john_doe"
-										},
-										{
-											"key": "limit",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "311"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"137-BiW41fKZ1WzGJGWob+3FY/0L+BQ\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:06:53 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "[\n    {\n        \"id\": 11,\n        \"username\": \"sample\",\n        \"email\": \"sample@gmail.com\",\n        \"bio\": \"\",\n        \"createdAt\": \"2025-07-05T13:45:51.183Z\",\n        \"tweetsCount\": 0,\n        \"likesGiven\": 0,\n        \"likesReceived\": 0\n    },\n    {\n        \"id\": 12,\n        \"username\": \"sample1\",\n        \"email\": \"sample1@gmail.com\",\n        \"bio\": \"\",\n        \"createdAt\": \"2025-07-05T14:05:35.342Z\",\n        \"tweetsCount\": 0,\n        \"likesGiven\": 0,\n        \"likesReceived\": 0\n    }\n]"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🙆‍♂️ Search by Username",
@@ -1190,76 +787,7 @@
 						},
 						"description": "Get any user's public profile by username"
 					},
-					"response": [
-						{
-							"id": "36248379-fda1ff3c-07bf-4430-8cce-4b5e00dd1d54",
-							"name": "Success Search by Username",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/users/:username",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"users",
-										":username"
-									],
-									"variable": [
-										{
-											"key": "username",
-											"value": "john_doe"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "194"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"c2-q7kX9g0DPTwp7JzhO+Yfxa8Dweg\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:22:51 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"id\": 1,\n    \"username\": \"john_doe\",\n    \"email\": \"john@example.com\",\n    \"bio\": \"Software developer and coffee enthusiast\",\n    \"createdAt\": \"2024-01-15T00:00:00.000Z\",\n    \"tweetsCount\": 3,\n    \"likesGiven\": 3,\n    \"likesReceived\": 4\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🙆‍♂️ Get User Activity Feed",
@@ -1299,77 +827,7 @@
 						},
 						"description": "Getuser's activity feed (tweets and likes) - only accessible by the user themselves"
 					},
-					"response": [
-						{
-							"id": "36248379-0a1b1f2c-4232-4140-8ffe-648421b4766f",
-							"name": "Success Get User Activity Feed",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{BASE_URL}}/users/:username/activity",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"users",
-										":username",
-										"activity"
-									],
-									"variable": [
-										{
-											"key": "username",
-											"value": "john_doe"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "2391"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"957-XdwHlCC7fPaoZY1ZehfRAVdnWRI\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:24:09 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "[\n    {\n        \"type\": \"like\",\n        \"id\": 4,\n        \"tweetId\": 2,\n        \"content\": \"Working on some new UI designs. The future of web design is looking bright! ✨\",\n        \"date\": \"2025-07-04T01:39:26.292Z\",\n        \"data\": {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"tweet_id\": 2,\n            \"created_at\": \"2025-07-04T01:39:26.292Z\",\n            \"content\": \"Working on some new UI designs. The future of web design is looking bright! ✨\",\n            \"tweet_user_id\": 2,\n            \"activity_type\": \"like\",\n            \"activity_date\": \"2025-07-04T01:39:26.292Z\"\n        }\n    },\n    {\n        \"type\": \"like\",\n        \"id\": 6,\n        \"tweetId\": 3,\n        \"content\": \"Hot take: CSS Grid is still underrated in 2024 🔥\",\n        \"date\": \"2025-07-04T01:39:26.292Z\",\n        \"data\": {\n            \"id\": 6,\n            \"user_id\": 1,\n            \"tweet_id\": 3,\n            \"created_at\": \"2025-07-04T01:39:26.292Z\",\n            \"content\": \"Hot take: CSS Grid is still underrated in 2024 🔥\",\n            \"tweet_user_id\": 3,\n            \"activity_type\": \"like\",\n            \"activity_date\": \"2025-07-04T01:39:26.292Z\"\n        }\n    },\n    {\n        \"type\": \"like\",\n        \"id\": 13,\n        \"tweetId\": 6,\n        \"content\": \"Data visualization tip: Always consider your audience before choosing chart types. What's obvious to you might be confusing to others 📊\",\n        \"date\": \"2025-07-04T01:39:26.292Z\",\n        \"data\": {\n            \"id\": 13,\n            \"user_id\": 1,\n            \"tweet_id\": 6,\n            \"created_at\": \"2025-07-04T01:39:26.292Z\",\n            \"content\": \"Data visualization tip: Always consider your audience before choosing chart types. What's obvious to you might be confusing to others 📊\",\n            \"tweet_user_id\": 5,\n            \"activity_type\": \"like\",\n            \"activity_date\": \"2025-07-04T01:39:26.292Z\"\n        }\n    },\n    {\n        \"type\": \"tweet\",\n        \"id\": 4,\n        \"content\": \"Coffee break = debugging break ☕️\",\n        \"date\": \"2024-07-01T07:20:00.000Z\",\n        \"data\": {\n            \"id\": 4,\n            \"user_id\": 1,\n            \"content\": \"Coffee break = debugging break ☕️\",\n            \"likes\": 0,\n            \"retweets\": 0,\n            \"created_at\": \"2024-07-01T07:20:00.000Z\",\n            \"activity_type\": \"tweet\",\n            \"activity_date\": \"2024-07-01T07:20:00.000Z\"\n        }\n    },\n    {\n        \"type\": \"tweet\",\n        \"id\": 1,\n        \"content\": \"Just finished building an amazing React component! 🚀\",\n        \"date\": \"2024-06-30T02:30:00.000Z\",\n        \"data\": {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"content\": \"Just finished building an amazing React component! 🚀\",\n            \"likes\": 0,\n            \"retweets\": 0,\n            \"created_at\": \"2024-06-30T02:30:00.000Z\",\n            \"activity_type\": \"tweet\",\n            \"activity_date\": \"2024-06-30T02:30:00.000Z\"\n        }\n    },\n    {\n        \"type\": \"tweet\",\n        \"id\": 12,\n        \"content\": \"That moment when your code works on the first try... but you don't trust it 😂\",\n        \"date\": \"2024-06-27T05:30:00.000Z\",\n        \"data\": {\n            \"id\": 12,\n            \"user_id\": 1,\n            \"content\": \"That moment when your code works on the first try... but you don't trust it 😂\",\n            \"likes\": 0,\n            \"retweets\": 0,\n            \"created_at\": \"2024-06-27T05:30:00.000Z\",\n            \"activity_type\": \"tweet\",\n            \"activity_date\": \"2024-06-27T05:30:00.000Z\"\n        }\n    }\n]"
-						}
-					]
+					"response": []
 				}
 			],
 			"id": "36248379-06141184-8d54-4411-a7b6-a495672dcbb4"
