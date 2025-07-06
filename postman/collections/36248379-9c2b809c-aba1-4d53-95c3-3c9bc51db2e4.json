@@ -41,7 +41,7 @@
 					"response": [
 						{
 							"id": "36248379-795f3645-18dc-4d4a-902d-e7a2a0bb526a",
-							"name": "Username Already Exist",
+							"name": "Username Already Exists",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
@@ -112,7 +112,7 @@
 						},
 						{
 							"id": "36248379-31e36f20-9cd8-4767-a3f1-5c4964407530",
-							"name": "🔒 Register User",
+							"name": "Email Already Exists",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
