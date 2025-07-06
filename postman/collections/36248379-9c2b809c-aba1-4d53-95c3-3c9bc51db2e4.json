@@ -1995,7 +1995,92 @@
 						},
 						"description": "Toggle like/unlike status for a tweet (convenient alternative to separate like/unlike endpoints)"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-6e682c33-813f-4698-ae84-bf1218439e2f",
+							"name": "🐦 Toggle Like/Unlike",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id/toggle-like",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id",
+										"toggle-like"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-GNDyEGK1yBKJB1sFHYU2n5ZGC54\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:22:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"error\": \"Invalid or expired token\"\n}"
+						}
+					]
 				}
 			],
 			"id": "36248379-2a6336b0-8ce3-4049-9b34-b69698d75bfb"
