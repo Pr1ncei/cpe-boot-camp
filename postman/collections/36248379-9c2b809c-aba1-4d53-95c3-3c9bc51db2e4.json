@@ -3523,6 +3523,74 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Profile for @john_doe retrieved successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"john_doe\",\n        \"email\": \"john@example.com\",\n        \"bio\": \"Software developer and coffee enthusiast\",\n        \"createdAt\": \"2024-01-15T00:00:00.000Z\",\n        \"tweetsCount\": 1,\n        \"likesGiven\": 3,\n        \"likesReceived\": 0\n    }\n}"
+						},
+						{
+							"id": "36248379-35874e6c-0ada-416d-9302-e09ea1a1f0a7",
+							"name": "User not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/:username",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "john_does"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-tuBbUn8xKrOFn6dvskwByyx+FeU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:29:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"User not found\"\n}"
 						}
 					]
 				},
