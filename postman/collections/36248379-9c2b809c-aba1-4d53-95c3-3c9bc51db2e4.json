@@ -1431,7 +1431,7 @@
 					"response": [
 						{
 							"id": "36248379-bf919bba-31df-43b3-8a8a-902ec26abe0f",
-							"name": "🐦 Get Feed",
+							"name": "Feed Retrieved",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
