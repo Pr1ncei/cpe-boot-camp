@@ -3346,7 +3346,7 @@
 					"response": [
 						{
 							"id": "36248379-bf5fd2ac-0dfd-4eaf-aaac-281a30eb55da",
-							"name": "Searched Completed",
+							"name": "Searched User",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
