@@ -2122,7 +2122,7 @@
 					"response": [
 						{
 							"id": "36248379-7b120d9d-17f2-4646-81e7-63bc28319e3b",
-							"name": "🙆‍♂️ Get Current User",
+							"name": "Invalid Token",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
