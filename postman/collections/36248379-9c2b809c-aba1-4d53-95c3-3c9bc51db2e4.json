@@ -38,7 +38,79 @@
 						},
 						"description": "Create a new user account with username, email, and password"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-795f3645-18dc-4d4a-902d-e7a2a0bb526a",
+							"name": "Username Already Exist",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"gregory\",\r\n    \"password\": \"password123\",\r\n    \"email\": \"sample@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "54"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"36-A+a8CTwLz/Fl3WkQbAghZ7wt3x4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:15:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Username already exists\"\n}"
+						}
+					]
 				},
 				{
 					"name": "🔒 Login User",
