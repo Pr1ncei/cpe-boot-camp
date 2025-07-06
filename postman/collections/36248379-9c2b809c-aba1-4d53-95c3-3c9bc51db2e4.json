@@ -1144,6 +1144,89 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"error\": \"Invalid or expired token\"\n}"
+						},
+						{
+							"id": "36248379-36a393b7-0fd1-4c97-a95a-ad4459080af1",
+							"name": "Tweet not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-p4WTh+JSbgJ9mo5oXbmn1gnueTY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:21:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Tweet not found\"\n}"
 						}
 					]
 				},
