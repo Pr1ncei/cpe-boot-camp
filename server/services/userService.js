@@ -1,10 +1,13 @@
+// services/userService.js
+
 const { findUserById, findUserByUsername, userToJSON, getUserStats } = require("../models/userModel");
 const { findTweetsByUserId } = require("../models/tweetModel");
+const { NotFoundError, AuthorizationError } = require("../utils/customErrors");
 
 const getCurrentUser = (userId) => {
 	const user = findUserById(userId);
 	if (!user) {
-		throw new Error("User not found");
+		throw new NotFoundError("User not found");
 	}
 
 	const stats = getUserStats(userId);
@@ -18,7 +21,7 @@ const getCurrentUser = (userId) => {
 const getUserByUsername = (username) => {
 	const user = findUserByUsername(username);
 	if (!user) {
-		throw new Error("User not found");
+		throw new NotFoundError("User not found");
 	}
 
 	const userTweets = findTweetsByUserId(user.id);
@@ -34,7 +37,7 @@ const getUserByUsername = (username) => {
 const getUserProfile = (username, currentUserId = null) => {
 	const user = findUserByUsername(username);
 	if (!user) {
-		throw new Error("User not found");
+		throw new NotFoundError("User not found");
 	}
 
 	const userTweets = findTweetsByUserId(user.id);
@@ -80,7 +83,7 @@ const searchUsers = (query, limit = 10) => {
 const getUserActivity = (userId, limit = 20) => {
 	const user = findUserById(userId);
 	if (!user) {
-		throw new Error("User not found");
+		throw new NotFoundError("User not found");
 	}
 
 	const { getDatabase } = require("../config/database");

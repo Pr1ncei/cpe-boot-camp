@@ -1,3 +1,5 @@
+// services/tweetService.js
+
 const { validateTweetInput } = require("../utils/validation");
 const { findUserById, findUserByUsername, userToJSON } = require("../models/userModel");
 const {
@@ -5,13 +7,13 @@ const {
 	findTweetsWithPagination,
 	findTweetsByUserId,
 	findTweetById,
-	saveTweet,
 	deleteTweet,
 	likeTweet,
 	unlikeTweet,
 	isLikedByUser,
 	getTweetLikers,
 } = require("../models/tweetModel");
+const { ValidationError, NotFoundError, AuthorizationError, ConflictError } = require("../utils/customErrors");
 
 const getAllTweets = (page, limit) => {
 	const result = findTweetsWithPagination(page, limit);
@@ -30,7 +32,7 @@ const getAllTweets = (page, limit) => {
 const getUserTweets = (username) => {
 	const user = findUserByUsername(username);
 	if (!user) {
-		throw new Error("User not found");
+		throw new NotFoundError("User not found");
 	}
 
 	const tweets = findTweetsByUserId(user.id).map((tweet) => ({
@@ -44,7 +46,13 @@ const getUserTweets = (username) => {
 const createNewTweet = (userId, content) => {
 	const { error } = validateTweetInput({ content });
 	if (error) {
-		throw new Error(error);
+		throw new ValidationError(error);
+	}
+
+	// Verify user exists
+	const user = findUserById(userId);
+	if (!user) {
+		throw new NotFoundError("User not found");
 	}
 
 	const tweet = createTweet({
@@ -52,7 +60,6 @@ const createNewTweet = (userId, content) => {
 		content: content.trim(),
 	});
 
-	const user = findUserById(userId);
 	return {
 		...tweet,
 		user: userToJSON(user),
@@ -62,11 +69,11 @@ const createNewTweet = (userId, content) => {
 const likeTweetById = (tweetId, userId) => {
 	const tweet = findTweetById(tweetId);
 	if (!tweet) {
-		throw new Error("Tweet not found");
+		throw new NotFoundError("Tweet not found");
 	}
 
 	if (isLikedByUser(tweetId, userId)) {
-		throw new Error("Tweet already liked by this user");
+		throw new ConflictError("Tweet already liked by this user");
 	}
 
 	const updatedTweet = likeTweet(tweetId, userId);
@@ -79,11 +86,11 @@ const likeTweetById = (tweetId, userId) => {
 const unlikeTweetById = (tweetId, userId) => {
 	const tweet = findTweetById(tweetId);
 	if (!tweet) {
-		throw new Error("Tweet not found");
+		throw new NotFoundError("Tweet not found");
 	}
 
 	if (!isLikedByUser(tweetId, userId)) {
-		throw new Error("Tweet not liked by this user");
+		throw new ConflictError("Tweet not liked by this user");
 	}
 
 	const updatedTweet = unlikeTweet(tweetId, userId);
@@ -96,7 +103,7 @@ const unlikeTweetById = (tweetId, userId) => {
 const toggleLikeTweet = (tweetId, userId) => {
 	const tweet = findTweetById(tweetId);
 	if (!tweet) {
-		throw new Error("Tweet not found");
+		throw new NotFoundError("Tweet not found");
 	}
 
 	const isLiked = isLikedByUser(tweetId, userId);
@@ -125,7 +132,7 @@ const toggleLikeTweet = (tweetId, userId) => {
 const getTweetWithLikes = (tweetId, userId = null) => {
 	const tweet = findTweetById(tweetId);
 	if (!tweet) {
-		throw new Error("Tweet not found");
+		throw new NotFoundError("Tweet not found");
 	}
 
 	const user = findUserById(tweet.userId);
@@ -147,17 +154,23 @@ const getTweetWithLikes = (tweetId, userId = null) => {
 const deleteTweetById = (tweetId, userId) => {
 	const tweet = findTweetById(tweetId);
 	if (!tweet) {
-		throw new Error("Tweet not found");
+		throw new NotFoundError("Tweet not found");
 	}
 
 	if (tweet.userId !== userId) {
-		throw new Error("You can only delete your own tweets");
+		throw new AuthorizationError("You can only delete your own tweets");
 	}
 
 	return deleteTweet(tweetId);
 };
 
 const getUserFeed = (userId, page = 1, limit = 20) => {
+	// Verify user exists
+	const user = findUserById(userId);
+	if (!user) {
+		throw new NotFoundError("User not found");
+	}
+
 	const result = getAllTweets(page, limit);
 
 	result.tweets = result.tweets.map((tweet) => ({
@@ -171,7 +184,7 @@ const getUserFeed = (userId, page = 1, limit = 20) => {
 const getTweetStats = (tweetId) => {
 	const tweet = findTweetById(tweetId);
 	if (!tweet) {
-		throw new Error("Tweet not found");
+		throw new NotFoundError("Tweet not found");
 	}
 
 	const likers = getTweetLikers(tweetId);
