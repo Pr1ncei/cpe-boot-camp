@@ -229,7 +229,7 @@
 						},
 						{
 							"id": "36248379-85879ad1-0528-4ada-b05f-f6d5337373b2",
-							"name": "🔒 Login User",
+							"name": "Username/Password Required",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
