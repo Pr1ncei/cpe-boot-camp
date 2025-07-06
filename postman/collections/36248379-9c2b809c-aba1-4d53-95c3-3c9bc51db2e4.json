@@ -3240,7 +3240,7 @@
 						},
 						{
 							"id": "36248379-a152d654-4a38-43ed-a1d9-e1942bff8c75",
-							"name": "🙆‍♂️ Get Current User",
+							"name": "Retrieved User",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -3343,7 +3343,80 @@
 						},
 						"description": "Search for users by username or bio content"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-bf5fd2ac-0dfd-4eaf-aaac-281a30eb55da",
+							"name": "🙆‍♂️ Search User/Bio",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/search?q=john_doe&limit",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										"search"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "john_doe"
+										},
+										{
+											"key": "limit",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "275"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"113-7aU/RoDcShODLZcPQXSZOWfxkXE\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:27:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User search completed for \\\"john_doe\\\"\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"username\": \"john_doe\",\n            \"email\": \"john@example.com\",\n            \"bio\": \"Software developer and coffee enthusiast\",\n            \"createdAt\": \"2024-01-15T00:00:00.000Z\",\n            \"tweetsCount\": 1,\n            \"likesGiven\": 3,\n            \"likesReceived\": 0\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "🙆‍♂️ Search by Username",
