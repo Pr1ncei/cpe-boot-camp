@@ -781,7 +781,7 @@
 					"response": [
 						{
 							"id": "36248379-f8dfb715-538f-487a-9b06-0d065726847a",
-							"name": "🐦 Create Tweet",
+							"name": "Create Tweet Successful",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
