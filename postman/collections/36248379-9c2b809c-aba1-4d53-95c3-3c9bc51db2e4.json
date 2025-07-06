@@ -2267,6 +2267,90 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Tweet already liked by this user\"\n}"
+						},
+						{
+							"id": "36248379-79680fa0-69d7-4ec6-aa99-cb585224c4e6",
+							"name": "Like Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id/like",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id",
+										"like"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53-AAdjY6drlb9hBQn3MAODwJhocOA\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:25:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Tweet liked successfully\",\n    \"data\": {\n        \"id\": 5,\n        \"likes\": 3\n    }\n}"
 						}
 					]
 				},
