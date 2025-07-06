@@ -38,79 +38,7 @@
 						},
 						"description": "Create a new user account with username, email, and password"
 					},
-					"response": [
-						{
-							"id": "36248379-beaf0213-d1b7-4aeb-a694-e928449ede59",
-							"name": "Success Register",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"username\": \"gregory\",\r\n    \"password\": \"password123\",\r\n    \"email\": \"sample@gmail.com\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/auth/register",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"auth",
-										"register"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "307"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"133-oon4TnGjFRJAGbxlHmniErXIBng\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:55:28 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"User created successfully\",\n    \"user\": {\n        \"id\": 29,\n        \"username\": \"gregory\",\n        \"email\": \"sample@gmail.com\",\n        \"bio\": \"\",\n        \"createdAt\": \"2025-07-05T14:55:28.911Z\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI5LCJpYXQiOjE3NTE3MjczMjgsImV4cCI6MTc1MjMzMjEyOH0.M7H8HbRmpe1MpEXOHF622Y84f02EWfsq-BsLsn3_UdQ\"\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🔒 Login User",
@@ -156,79 +84,7 @@
 						},
 						"description": "Login with existing credentials (username or email)"
 					},
-					"response": [
-						{
-							"id": "36248379-daed2484-7295-46b2-bea4-3ef2396c8c8e",
-							"name": "Success Login",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"username\":\"john_doe\",\r\n    \"password\":\"password123\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{BASE_URL}}/auth/login",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "339"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"153-wbgyob3kGgo7/sIlL7xdhyxJTbc\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:54:37 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"message\": \"Login successful\",\n    \"user\": {\n        \"id\": 21,\n        \"username\": \"john_doe\",\n        \"email\": \"john@example.com\",\n        \"bio\": \"Software developer and coffee enthusiast\",\n        \"createdAt\": \"2024-01-15T00:00:00.000Z\"\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIxLCJpYXQiOjE3NTE3MjcyNzcsImV4cCI6MTc1MjMzMjA3N30._L5d7Vc-hB9YwcLVA6IdDlApTicUqOAQ3X75PAT5WUw\"\n}"
-						}
-					]
+					"response": []
 				}
 			],
 			"id": "36248379-b85cef90-82d1-451e-9b79-664e685780ff"
@@ -1647,7 +1503,7 @@
 								},
 								{
 									"key": "limit",
-									"value": null
+									"value": ""
 								}
 							]
 						},
@@ -1960,7 +1816,10 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": ""
+						}
 					},
 					"response": []
 				}
