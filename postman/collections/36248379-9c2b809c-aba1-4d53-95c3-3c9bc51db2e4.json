@@ -251,6 +251,77 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": 11,\n            \"username\": \"gregory123\",\n            \"email\": \"sample123@gmail.com\",\n            \"bio\": \"\",\n            \"createdAt\": \"2025-07-06T13:16:27.259Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE3NTE4MDc3ODcsImV4cCI6MTc1MjQxMjU4N30.-nln9R4Abdov-BUEFRbRU1Auv7zUrQoH15xDHavwcns\"\n    }\n}"
+						},
+						{
+							"id": "36248379-5066fb92-9a6c-4e53-9c16-7c6c9f039d48",
+							"name": "🔒 Register User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"\",\r\n    \"password\": \"password123\",\r\n    \"email\": \"sample123@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a-5L3AfhPkQQwvAiAvwDqRdXNSoDU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:16:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Username must be at least 3 characters long\"\n}"
 						}
 					]
 				},
