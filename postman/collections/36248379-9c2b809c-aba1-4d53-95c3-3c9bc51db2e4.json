@@ -988,7 +988,7 @@
 					"response": [
 						{
 							"id": "36248379-f9195628-f5ce-4fc4-bb47-a5502f015b2f",
-							"name": "🐦 Delete Tweet",
+							"name": "Invalid Token or Expired",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
