@@ -3770,6 +3770,75 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Activity for @john_doe retrieved successfully\",\n    \"data\": [\n        {\n            \"type\": \"like\",\n            \"id\": 15,\n            \"tweetId\": 5,\n            \"content\": \"Finally deployed my first microservice architecture! The learning curve was steep but so worth it 💪\",\n            \"date\": \"2025-07-06T13:25:51.284Z\",\n            \"data\": {\n                \"id\": 15,\n                \"user_id\": 1,\n                \"tweet_id\": 5,\n                \"created_at\": \"2025-07-06T13:25:51.284Z\",\n                \"content\": \"Finally deployed my first microservice architecture! The learning curve was steep but so worth it 💪\",\n                \"tweet_user_id\": 4,\n                \"activity_type\": \"like\",\n                \"activity_date\": \"2025-07-06T13:25:51.284Z\"\n            }\n        },\n        {\n            \"type\": \"like\",\n            \"id\": 4,\n            \"tweetId\": 2,\n            \"content\": \"Working on some new UI designs. The future of web design is looking bright! ✨\",\n            \"date\": \"2025-07-05T14:57:54.764Z\",\n            \"data\": {\n                \"id\": 4,\n                \"user_id\": 1,\n                \"tweet_id\": 2,\n                \"created_at\": \"2025-07-05T14:57:54.764Z\",\n                \"content\": \"Working on some new UI designs. The future of web design is looking bright! ✨\",\n                \"tweet_user_id\": 2,\n                \"activity_type\": \"like\",\n                \"activity_date\": \"2025-07-05T14:57:54.764Z\"\n            }\n        },\n        {\n            \"type\": \"like\",\n            \"id\": 13,\n            \"tweetId\": 6,\n            \"content\": \"Data visualization tip: Always consider your audience before choosing chart types. What's obvious to you might be confusing to others 📊\",\n            \"date\": \"2025-07-05T14:57:54.764Z\",\n            \"data\": {\n                \"id\": 13,\n                \"user_id\": 1,\n                \"tweet_id\": 6,\n                \"created_at\": \"2025-07-05T14:57:54.764Z\",\n                \"content\": \"Data visualization tip: Always consider your audience before choosing chart types. What's obvious to you might be confusing to others 📊\",\n                \"tweet_user_id\": 5,\n                \"activity_type\": \"like\",\n                \"activity_date\": \"2025-07-05T14:57:54.764Z\"\n            }\n        },\n        {\n            \"type\": \"tweet\",\n            \"id\": 10,\n            \"content\": \"That moment when your code works on the first try... but you don't trust it 😂\",\n            \"date\": \"2024-06-27T05:30:00.000Z\",\n            \"data\": {\n                \"id\": 10,\n                \"user_id\": 1,\n                \"content\": \"That moment when your code works on the first try... but you don't trust it 😂\",\n                \"likes\": 0,\n                \"retweets\": 0,\n                \"created_at\": \"2024-06-27T05:30:00.000Z\",\n                \"activity_type\": \"tweet\",\n                \"activity_date\": \"2024-06-27T05:30:00.000Z\"\n            }\n        }\n    ]\n}"
+						},
+						{
+							"id": "36248379-f1552350-0de0-4c5e-9417-8978e87936c5",
+							"name": "User not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/:username/activity",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										":username",
+										"activity"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "john_does"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-tuBbUn8xKrOFn6dvskwByyx+FeU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:29:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"User not found\"\n}"
 						}
 					]
 				}
