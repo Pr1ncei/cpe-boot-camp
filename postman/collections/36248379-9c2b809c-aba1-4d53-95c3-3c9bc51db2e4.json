@@ -1665,7 +1665,7 @@
 						},
 						{
 							"id": "36248379-5dc0c949-610f-4d56-8b21-8ee6eb6df7a2",
-							"name": "🐦 Get Single Tweet",
+							"name": "Retrieve Tweets Successful",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -1773,7 +1773,83 @@
 						},
 						"description": "Get all tweets from a specific user"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-b4eaac8e-b5ac-4bbf-b9ee-a0ab01dbcda5",
+							"name": "🐦 Get User Tweets",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/user/:username",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										"user",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "john_doe"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "348"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15c-8k8S/70Tjr64i0Vi9aA8cAwX1sI\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:24:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Tweets for @john_doe retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"userId\": 1,\n            \"content\": \"That moment when your code works on the first try... but you don't trust it 😂\",\n            \"likes\": 0,\n            \"retweets\": 0,\n            \"createdAt\": \"2024-06-27T05:30:00.000Z\",\n            \"user\": {\n                \"id\": 1,\n                \"username\": \"john_doe\",\n                \"bio\": \"Software developer and coffee enthusiast\"\n            }\n        }\n    ]\n}"
+						}
+					]
 				},
 				{
 					"name": "🐦 Get Tweet Stats",
