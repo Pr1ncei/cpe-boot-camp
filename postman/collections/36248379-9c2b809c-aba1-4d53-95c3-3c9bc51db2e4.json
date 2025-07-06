@@ -87,7 +87,7 @@
 					"response": [
 						{
 							"id": "36248379-dfdd2230-178a-4ad2-8445-b14f41bc788b",
-							"name": "🔒 Login User",
+							"name": "Login Successful",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
