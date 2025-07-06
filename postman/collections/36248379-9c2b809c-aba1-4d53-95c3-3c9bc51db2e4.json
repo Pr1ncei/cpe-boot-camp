@@ -1998,7 +1998,7 @@
 					"response": [
 						{
 							"id": "36248379-6e682c33-813f-4698-ae84-bf1218439e2f",
-							"name": "🐦 Toggle Like/Unlike",
+							"name": "Invalid Token",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -2119,7 +2119,70 @@
 						},
 						"description": "Get current authenticated user's profile with statistics"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-7b120d9d-17f2-4646-81e7-63bc28319e3b",
+							"name": "🙆‍♂️ Get Current User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/me",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-GNDyEGK1yBKJB1sFHYU2n5ZGC54\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:23:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"error\": \"Invalid or expired token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "🙆‍♂️ Search User/Bio",
