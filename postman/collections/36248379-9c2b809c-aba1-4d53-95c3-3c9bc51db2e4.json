@@ -3455,7 +3455,76 @@
 						},
 						"description": "Get any user's public profile by username"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-0d17092a-cceb-415a-8be9-b5a5e1f5e073",
+							"name": "🙆‍♂️ Search by Username",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_URL}}/users/:username",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"users",
+										":username"
+									],
+									"variable": [
+										{
+											"key": "username",
+											"value": "john_doe"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "279"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"117-bQ9Dq8HZNj2fph0asODZtM37gXs\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:28:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Profile for @john_doe retrieved successfully\",\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"john_doe\",\n        \"email\": \"john@example.com\",\n        \"bio\": \"Software developer and coffee enthusiast\",\n        \"createdAt\": \"2024-01-15T00:00:00.000Z\",\n        \"tweetsCount\": 1,\n        \"likesGiven\": 3,\n        \"likesReceived\": 0\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "🙆‍♂️ Get User Activity Feed",
