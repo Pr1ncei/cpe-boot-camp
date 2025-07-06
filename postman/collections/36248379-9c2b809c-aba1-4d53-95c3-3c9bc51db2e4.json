@@ -1662,6 +1662,80 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Tweet not found\"\n}"
+						},
+						{
+							"id": "36248379-5dc0c949-610f-4d56-8b21-8ee6eb6df7a2",
+							"name": "🐦 Get Single Tweet",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "766"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2fe-eeXC4WXn4jmeRlv4dc8MOA8N/WY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:24:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Tweet retrieved successfully\",\n    \"data\": {\n        \"id\": 5,\n        \"userId\": 4,\n        \"content\": \"Finally deployed my first microservice architecture! The learning curve was steep but so worth it 💪\",\n        \"likes\": 2,\n        \"retweets\": 0,\n        \"createdAt\": \"2024-06-29T08:45:00.000Z\",\n        \"user\": {\n            \"id\": 4,\n            \"username\": \"sarah_codes\",\n            \"email\": \"sarah@example.com\",\n            \"bio\": \"Full-stack developer | React & Node.js | Open source contributor\",\n            \"createdAt\": \"2024-01-20T00:00:00.000Z\"\n        },\n        \"likedByCurrentUser\": false,\n        \"likers\": [\n            {\n                \"id\": 6,\n                \"username\": \"ai_enthusiast\",\n                \"bio\": \"AI researcher | Machine Learning | Python evangelist 🤖\",\n                \"likedAt\": \"2025-07-05T14:57:54.764Z\"\n            },\n            {\n                \"id\": 7,\n                \"username\": \"designwiz\",\n                \"bio\": \"Creative director & UI/UX designer | Making the web beautiful ✨\",\n                \"likedAt\": \"2025-07-05T14:57:54.764Z\"\n            }\n        ]\n    }\n}"
 						}
 					]
 				},
