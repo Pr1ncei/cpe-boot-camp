@@ -489,7 +489,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "2"
+									"value": "1"
 								}
 							]
 						},
@@ -567,83 +567,7 @@
 						},
 						"description": "Get detailed statistics for a tweet including top likers"
 					},
-					"response": [
-						{
-							"id": "36248379-8e604ae7-c14b-499c-b4ac-06e4ee99c381",
-							"name": "Success Get Tweet Stats",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{BASE_URL}}/tweets/:id/stats",
-									"host": [
-										"{{BASE_URL}}"
-									],
-									"path": [
-										"tweets",
-										":id",
-										"stats"
-									],
-									"variable": [
-										{
-											"key": "id",
-											"value": "1"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								},
-								{
-									"key": "Access-Control-Allow-Credentials",
-									"value": "true"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "156"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"9c-FdpQKiAp0idMyNIC2YaYrV13Xe4\""
-								},
-								{
-									"key": "Date",
-									"value": "Sat, 05 Jul 2025 14:31:15 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"id\": 1,\n    \"likes\": 3,\n    \"retweets\": 0,\n    \"likerCount\": 3,\n    \"likers\": [\n        {\n            \"id\": 3,\n            \"username\": \"tech_guru\"\n        },\n        {\n            \"id\": 4,\n            \"username\": \"sarah_codes\"\n        },\n        {\n            \"id\": 2,\n            \"username\": \"jane_smith\"\n        }\n    ]\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "🐦 Like Tweet",
