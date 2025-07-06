@@ -1588,7 +1588,82 @@
 						},
 						"description": "Geta single tweet by ID with like status for authenticated users"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-0f24054e-df76-4b25-8886-5bf914a8b51e",
+							"name": "🐦 Get Single Tweet",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-p4WTh+JSbgJ9mo5oXbmn1gnueTY\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:24:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Tweet not found\"\n}"
+						}
+					]
 				},
 				{
 					"name": "🐦 Get User Tweets",
