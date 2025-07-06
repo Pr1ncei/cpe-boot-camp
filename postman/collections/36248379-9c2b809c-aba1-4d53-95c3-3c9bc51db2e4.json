@@ -180,6 +180,77 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Email already exists\"\n}"
+						},
+						{
+							"id": "36248379-86d29414-cb38-498e-a325-fbb4c8e7cbb1",
+							"name": "🔒 Register User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"gregory123\",\r\n    \"password\": \"password123\",\r\n    \"email\": \"sample123@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/register",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "344"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"158-3CxLpMagn6kyCNl8jon3qyMBUcc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:16:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"User registered successfully\",\n    \"data\": {\n        \"user\": {\n            \"id\": 11,\n            \"username\": \"gregory123\",\n            \"email\": \"sample123@gmail.com\",\n            \"bio\": \"\",\n            \"createdAt\": \"2025-07-06T13:16:27.259Z\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE3NTE4MDc3ODcsImV4cCI6MTc1MjQxMjU4N30.-nln9R4Abdov-BUEFRbRU1Auv7zUrQoH15xDHavwcns\"\n    }\n}"
 						}
 					]
 				},
