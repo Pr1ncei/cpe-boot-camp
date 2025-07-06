@@ -854,6 +854,82 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Tweet created successfully\",\n    \"data\": {\n        \"id\": 13,\n        \"userId\": 1,\n        \"content\": \"sample content here\",\n        \"likes\": 0,\n        \"retweets\": 0,\n        \"createdAt\": \"2025-07-06T13:18:49.717Z\",\n        \"user\": {\n            \"id\": 1,\n            \"username\": \"john_doe\",\n            \"email\": \"john@example.com\",\n            \"bio\": \"Software developer and coffee enthusiast\",\n            \"createdAt\": \"2024-01-15T00:00:00.000Z\"\n        }\n    }\n}"
+						},
+						{
+							"id": "36248379-65503b44-abdc-4dcd-ba70-fa2e9f819d13",
+							"name": "Invalid Token or Expired",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-GNDyEGK1yBKJB1sFHYU2n5ZGC54\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:19:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"error\": \"Invalid or expired token\"\n}"
 						}
 					]
 				},
@@ -909,7 +985,91 @@
 						},
 						"description": "Delete a tweet by ID (only the tweet author can delete their own tweets)"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "36248379-f9195628-f5ce-4fc4-bb47-a5502f015b2f",
+							"name": "🐦 Delete Tweet",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"content\":\"sample content here\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/tweets/:id",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"tweets",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "11"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Access-Control-Allow-Credentials",
+									"value": "true"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-GNDyEGK1yBKJB1sFHYU2n5ZGC54\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 06 Jul 2025 13:19:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"error\": \"Invalid or expired token\"\n}"
+						}
+					]
 				},
 				{
 					"name": "🐦 Get Tweets",
