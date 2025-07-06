@@ -1776,7 +1776,7 @@
 					"response": [
 						{
 							"id": "36248379-b4eaac8e-b5ac-4bbf-b9ee-a0ab01dbcda5",
-							"name": "🐦 Get User Tweets",
+							"name": "Tweets Retrieved",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
