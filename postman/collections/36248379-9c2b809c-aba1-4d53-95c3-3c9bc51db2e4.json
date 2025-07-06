@@ -1230,7 +1230,7 @@
 						},
 						{
 							"id": "36248379-9fe1753b-bb7b-4ca4-847d-e0f18c000970",
-							"name": "🐦 Delete Tweet",
+							"name": "Tweet Deleted",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [
