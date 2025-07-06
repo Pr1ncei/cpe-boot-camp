@@ -254,7 +254,7 @@
 						},
 						{
 							"id": "36248379-5066fb92-9a6c-4e53-9c16-7c6c9f039d48",
-							"name": "🔒 Register User",
+							"name": "Username Required",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
