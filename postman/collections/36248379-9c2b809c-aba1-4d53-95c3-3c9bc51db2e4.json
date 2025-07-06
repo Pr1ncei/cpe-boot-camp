@@ -1591,7 +1591,7 @@
 					"response": [
 						{
 							"id": "36248379-0f24054e-df76-4b25-8886-5bf914a8b51e",
-							"name": "🐦 Get Single Tweet",
+							"name": "Tweet Not Found",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
