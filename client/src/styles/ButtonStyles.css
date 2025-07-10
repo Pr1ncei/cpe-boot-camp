@@ -1,0 +1,25 @@
+.Button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+}
+
+.Button--primary {
+    background-color: #1DA1F2;
+}
+
+.Button--secondary {
+    background-color: #f7f8fa;
+}
+
+.Button:hover {
+    background-color: pink;
+}
+
+.dark-mode {
+    background-color: rgb(10,10,10);
+    color: white;
+}

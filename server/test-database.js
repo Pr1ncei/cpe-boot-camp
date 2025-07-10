@@ -17,7 +17,7 @@ try {
         ORDER BY name
     `
 		)
-		.all();
+		.all(); 
 
 	console.log("✅ Tables found:", tables.map((t) => t.name).join(", "));
 

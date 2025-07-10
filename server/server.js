@@ -13,7 +13,7 @@ const app = express();
 const PORT = process.env.PORT || 3140;
 
 initializeDatabase();
-
+	
 app.use(corsMiddleware);
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));

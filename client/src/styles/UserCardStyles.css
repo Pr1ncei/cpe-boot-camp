@@ -1,0 +1,39 @@
+
+.background{
+    justify-content: center;
+    /* background: linear-gradient(rgb(10,10,10), rgb(200,200,200));*/
+    background-color: rgb(10,10,10);
+    align-items: center;
+    height: 100vh;
+    display: flex;
+}
+
+.card{
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.4);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    word-spacing: 5;
+    background-color: ivory;
+    border-radius: 10px;
+    line-height: 1.8;
+    padding: 25px;
+    scale: 150%;
+}
+
+.card-username{
+    font-size: 22px;
+    font-style: bold;
+}
+
+.card-bio{
+    font-style: italic;
+    color: grey;
+    font-size: 13px;
+}
+
+.card-tweetcount {
+    color: black; 
+}
